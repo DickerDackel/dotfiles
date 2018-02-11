@@ -1,0 +1,37 @@
+# Fuck ^a
+escape ^]]
+
+term xterm
+termcapinfo xterm|xterms|xs ti=\E7\E[?47l
+# disable resize on attach
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# enable 256color support
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+
+defscrollback 4096
+
+startup_message off
+
+utf8 on
+defutf8 on
+
+bind k focus up
+bind j focus down
+bind l focus right
+bind h focus left
+bind < resize -5
+bind > resize +5
+bind , resize -1
+bind . resize +1
+
+monitor on
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{=b}%{by}%w %{bw}%{-b} - [%u] %= %H (%l) %C.%s%a"
+
+bind ^R screen -t root -M sudo bash
+
+activity 'Activity in window %n'
