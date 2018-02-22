@@ -79,9 +79,12 @@ if &diff
     colorscheme vividchalk
 endif
 
-:hi Search term=reverse ctermfg=black ctermbg=yellow
+:function! MyColourpatch()
+:  hi Search term=reverse ctermfg=black ctermbg=yellow
+:  hi IncSearch ctermfg=yellow ctermbg=black
+:  hi Comment term=NONE ctermfg=Grey ctermbg=NONE
+:endfunction
 
-:hi Comment term=NONE ctermfg=Grey ctermbg=NONE
 " :hi Search ctermbg=grey ctermfg=black
 :noremap <leader>p :set invpaste<CR>_
 set nopaste
@@ -96,6 +99,10 @@ set nowrap
 :set splitright
 :noremap <leader>s :split<CR><C-W><C-j>:next<CR>
 :noremap <leader>S :vsplit<CR><C-W><C-j>:next<CR>
+
+" https://www.youtube.com/watch?v=MquaityA1SM
+" Execute line under cursor as shell command
+:noremap <leader>Q !!$SHELL<CR>
 
 :noremap <leader>n :set invnumber<CR>
 
@@ -152,6 +159,7 @@ augroup filetypedetect
     au BufNewFile,BufRead *.sls		setf yaml
     au FileType python			set expandtab smarttab autoindent smartindent number cursorline
     au FileType yaml			set expandtab smarttab autoindent smartindent number cursorline
+    au BufNewFile,BufRead *		call MyColourpatch()
 augroup END
 
 " add matchig native plugin (:help matchit)
