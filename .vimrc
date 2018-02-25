@@ -115,6 +115,7 @@ set shiftwidth=4
 set smarttab
 set visualbell
 set wildmenu
+set wildmode=list:longest
 " set foldmethod=indent
 set foldmethod=syntax
 :hi Folded term=NONE ctermfg=red ctermbg=NONE
