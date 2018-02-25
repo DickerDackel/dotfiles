@@ -162,8 +162,9 @@ augroup filetypedetect
     au BufNewFile,BufRead *		call MyColourpatch()
 augroup END
 
-" add matchig native plugin (:help matchit)
-packadd matchit
+" add matchit native plugin (:help matchit)
+runtime macros/matchit.vim
+
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
