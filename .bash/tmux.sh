@@ -50,30 +50,27 @@ _tmux_nginx () {
 }
 
 _tmux_work () {
-    [ -z "$TMUX" ] && tmux new-session 
     tmux split-window -h
-    tmux send-keys -t right sudo bash
-    tmux send-keys -t left sudo bash
+    tmux send-keys -t 1 sudo bash
+    tmux send-keys -t 0 sudo bash
+    tmux select-pane 0
 }
 
 _tmux_newhost () {
     # top right: small run shell
-    tmux split-window -h -l 100
-    tsk -t 1 'ssh salt'
+    tmux split-window -h -l 100 'ssh salt'
     tsk -t 1 'sudo bash'
     tsk -t 1 'cd /srv/salt'
     tsk -t 1 C-l 'ls'
 
     # bottom right: logs
-    tmux split-window -v
-    tsk -t 2 'ssh salt'
+    tmux split-window -v 'ssh salt'
     tsk -t 2 'sudo bash'
     tsk -t 2 'ct messages'
 
     # bottom-left: work on shuttle
     tmux select-pane -t 0
-    tmux split-window -v -l 25
-    tsk -t 1 'ssh shuttle'
+    tmux split-window -v -l 25 'ssh shuttle'
     tsk -t 1 'sudo bash'
     tsk -t 1 'cd /srv/lxc'
     tsk -t 1 C-l ls C-j
@@ -96,7 +93,8 @@ _tmux_test () {
 
 _tmux_dev () {
     tmux new-window -n "Develop"
-    tmux split-window -h -l 100
-    tmux split-window -t 1 -v
+    tmux split-window -h -l 100 'ssh devel'
+    tmux split-window -t 1 -v 'ssh devel'
     tmux select-pane -t 0
+    tmk 'ssh devel'
 }
