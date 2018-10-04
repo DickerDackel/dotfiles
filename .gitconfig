@@ -1,12 +1,15 @@
+[include]
+    path = ~/.gitconfig-private
+
 [push]
-	default = simple
+    default = simple
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [merge]
-	tool = vimmdiff
+    tool = vimmdiff
 [difftool]
-	prompt = false
+    prompt = false
 [core]
-	editor = vim
+    editor = vim
 [alias]
-	d = difftool
+    d = difftool
