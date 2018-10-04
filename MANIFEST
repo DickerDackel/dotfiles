@@ -1,0 +1,9 @@
+.bash
+.bashrc
+.dircolors
+.gitconfig
+.profile
+.screenrc
+.tmux.conf
+.vim
+.vimrc
