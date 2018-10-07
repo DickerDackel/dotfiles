@@ -27,15 +27,34 @@ EOF
 [ -n "$SUDO_USER" ] && alias tmux="tmux -L $SUDO_USER"
 
 tm () {
-    for recipe in "$@"; do
-	_tmux_$recipe
-    done
+    [ -z "$TMUX" ] && echo "Not inside a tmux session.  Cancelled." && return 1
+
+    local recipe
+    recipe=$1; shift 1
+
+    _tmux_$recipe "$@"
 }
 
 tsk () {
     tmux send-keys "$@" C-j
 }
 
+# Just a vertical split to a named host (or salt by default)
+_tmux_ssh () {
+    tmux split-window -v "ssh ${1:salt}"
+}
+
+# Just 2 big root panes
+_tmux_work () {
+    tmux split-window -h
+    tsk -t 1 sudo bash
+    tsk -t 0 sudo bash
+    tmux select-pane 0
+}
+
+# My nginx log session
+# Win 1: cache-hit log
+# Win 2: goaccess
 _tmux_nginx () {
     [ -z "$TMUX" ] && tmux new-session -d -s nginx -n cache-hits 'ssh nginx'
     tsk -t nginx:cache-hits 'exec sudo bash'
@@ -49,16 +68,51 @@ _tmux_nginx () {
     [ -z "$TMUX" ] && tmux attach -t nginx
 }
 
-_tmux_work () {
-    tmux split-window -h
-    tmux send-keys -t 1 sudo bash
-    tmux send-keys -t 0 sudo bash
-    tmux select-pane 0
+# 4 Panes to work with saltstack
+#   0. Major edit pane
+#   1. run salt commands
+#   2. ssh to target host (tm salt TARGET-HOST), also salt if empty
+#   3. colortail on /var/log/messages, /var/log/salt/master & minion
+_tmux_salt () {
+    # top right: small shell on target host (or salt)
+    tmux split-window -h -l 100 "ssh ${1:-salt}"
+    tsk -t 1 'sudo bash'
+    tsk -t 1 'cd /srv/salt'
+    tsk -t 1 'ls'
+    #tsk -t 1 C-l 'ls'
+
+    # bottom right: logs
+    tmux split-window -v 'ssh salt'
+    tsk -t 2 'sudo bash'
+    tsk -t 2 'ct messages /var/log/salt/{minion,master}'
+
+    # top right: small run shell
+    tmux select-pane -t 0
+    tmux split-window -v -l 25 'ssh salt'
+    tsk -t 1 'sudo bash'
+    tsk -t 1 'cd /srv/lxc'
+    tsk -t 1 C-l ls C-j
+
+    # top-left: work on salt
+    tmux select-pane -t 0
+    tsk -t 0 'ssh salt'
+    tsk -t 0 'sudo bash'
+    tsk -t 0 'cd /srv/salt'
+    tsk -t 0 C-l 'ls'
 }
 
+# Modified 'salt' layout with one window on the lxc host to handle container
+# stuff
+#   0. Major edit pane
+#   1. shuttle:/srv/lxc
+#   2. ssh to target host (tm salt TARGET-HOST), also salt if empty
+#   3. colortail on /var/log/messages, /var/log/salt/master & minion
 _tmux_newhost () {
+    local host
+
     # top right: small run shell
-    tmux split-window -h -l 100 'ssh salt'
+    host=${$1:-salt}
+    tmux split-window -h -l 100 "ssh ${1:salt}"
     tsk -t 1 'sudo bash'
     tsk -t 1 'cd /srv/salt'
     tsk -t 1 C-l 'ls'
@@ -83,14 +137,7 @@ _tmux_newhost () {
     tsk -t 0 C-l 'ls'
 }
 
-_tmux_test () {
-    tmux new-window -n "test"
-    tmux select-window -t test
-    tmux send-keys C-l "ls -l" C-j
-    tmux previous-window
-    tmux send-keys C-l
-}
-
+# 3-pane layout on the dev host for free usage
 _tmux_dev () {
     tmux new-window -n "Develop"
     tmux split-window -h -l 100 'ssh devel'
