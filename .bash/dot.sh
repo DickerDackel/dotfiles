@@ -11,20 +11,24 @@ dot () {
 
 _dot-update-usage () {
     cat <<-EOF
-Usage: dot-update [-v] [-p] [-d DEST]
+Usage: dot-update [OPTIONS...]
 
-  -v		Verbose
+Options are
+
+  -v		rsync verbose
   -h		This help
+  -n		rsync dry-run
   -p		git pull before updating
   -d DEST_DIR	Update DEST_DIR instead of '$HOME'
 
+Note: It's mandatory, that your cwd is the dotfile repo!
 EOF
 }
 
 dot-update () {
-    local OPTARG OPTIND opt optstring verbose dest
+    local OPTARG OPTIND opt optstring verbose dry_run dest
 
-    optstring="vhpd:"
+    optstring="vhnpd:"
     dest=$HOME
 
     while getopts "$optstring" opt; do
@@ -32,11 +36,16 @@ dot-update () {
 	    v) verbose='-P' ;;
 	    p) git pull ;;
 	    d) dest=${$OPTARG%%/} ;;
+	    n) dry_run='-n' ;;
 	    h|*)
-		usage
+		_dot-update-usage
 		return
 		;;
 	esac
     done
-    rsync "$@" -auhHx $verbose --recursive --files-from=MANIFEST ./ "$dest"/
+    shift $(( $OPTIND - 1 ))
+
+    [ ! -f "MANIFEST" ] && _dot-update-usage && return 1
+
+    rsync -auhHx $verbose $dry_run --recursive --files-from=MANIFEST ./ "$dest"/
 }
