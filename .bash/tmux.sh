@@ -108,21 +108,19 @@ _tmux_salt () {
 #   2. ssh to target host (tm salt TARGET-HOST), also salt if empty
 #   3. colortail on /var/log/messages, /var/log/salt/master & minion
 _tmux_newhost () {
-    local host
-
-    # top right: small run shell
-    host=${1:-salt}
-    tmux split-window -h -l 100 "ssh ${1:salt}"
+    # top right: small shell on target host (or salt)
+    tmux split-window -h -l 100 "ssh ${1:-salt}"
     tsk -t 1 'sudo bash'
     tsk -t 1 'cd /srv/salt'
-    tsk -t 1 C-l 'ls'
+    tsk -t 1 'ls'
+    #tsk -t 1 C-l 'ls'
 
     # bottom right: logs
     tmux split-window -v 'ssh salt'
     tsk -t 2 'sudo bash'
-    tsk -t 2 'ct messages'
+    tsk -t 2 'ct messages /var/log/salt/{minion,master}'
 
-    # bottom-left: work on shuttle
+    # top right: small run shell
     tmux select-pane -t 0
     tmux split-window -v -l 25 'ssh shuttle'
     tsk -t 1 'sudo bash'
