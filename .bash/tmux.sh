@@ -111,7 +111,7 @@ _tmux_newhost () {
     local host
 
     # top right: small run shell
-    host=${$1:-salt}
+    host=${1:-salt}
     tmux split-window -h -l 100 "ssh ${1:salt}"
     tsk -t 1 'sudo bash'
     tsk -t 1 'cd /srv/salt'
@@ -144,4 +144,17 @@ _tmux_dev () {
     tmux split-window -t 1 -v 'ssh devel'
     tmux select-pane -t 0
     tmk 'ssh devel'
+}
+
+_tmux_2 () {
+    tmux split-window -h
+    tmux select-pane -t 0
+}
+
+_tmux_4 () {
+    tmux split-window -h
+    tmux split-window -v
+    tmux select-pane -t 0
+    tmux split-window -v
+    tmux select-pane -t 0
 }
