@@ -13,7 +13,8 @@ export LESS=-isSXR
 export PAGER=less
 export EDITOR=vim
 
-export TERM=xterm-256color
+[ -n "$TMUX" ] && TERM=screen-256color || TERM=xterm-256color
+export TERM
 
 for dir in \
     ~/.local/bin \
@@ -35,11 +36,6 @@ elif [ -f /etc/DIR_COLORS ]; then
     eval `dircolors -b /etc/DIR_COLORS`
 else
     eval `dircolors -b`
-fi
-
-unset PROMPT_COMMAND
-if [ $TERM = 'xterm' -o $TERM = 'xterm-color' -o $TERM = 'Eterm' ]; then
-    export PROMPT_COMMAND='echo -n "]2;$HOSTNAME:$PWD"'
 fi
 
 alias rm='rm -v'
