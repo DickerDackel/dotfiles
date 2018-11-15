@@ -13,8 +13,8 @@ export LESS=-isSXR
 export PAGER=less
 export EDITOR=vim
 
-[ -n "$TMUX" ] && TERM=screen-256color || TERM=xterm-256color
-export TERM
+#[ -n "$TMUX" ] && TERM=screen-256color || TERM=xterm-256color
+#export TERM
 
 for dir in \
     ~/.local/bin \
