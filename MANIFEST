@@ -7,5 +7,7 @@
 .tmux.conf
 .tmux-new-mouse.conf
 .tmux-old-mouse.conf
+.tmux-new-vi.conf
+.tmux-old-vi.conf
 .vim
 .vimrc
