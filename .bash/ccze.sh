@@ -1,4 +1,5 @@
-alias ccze='ccze -A -o nolookups'
+CCZEOPTS="-A -o nolookups"
+alias ccze="ccze $CCZEOPTS"
 
 ct () {
     local logs log
@@ -10,5 +11,7 @@ ct () {
 	    logs+=( "/var/log/$log" )
 	fi
     done
-    tail -F ${logs[@]} | ccze -A
+    tail -F ${logs[@]} | ccze $CCZEOPTS
 }
+
+alias cj="journalctl -f $@ | ccze $CCZEOPTS"
