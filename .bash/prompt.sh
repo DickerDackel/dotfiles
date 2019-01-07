@@ -2,17 +2,21 @@ TIER="prod"
 [[ $HOSTNAME =~ -(stage|int)- ]] && TIER="int"
 [[ $HOSTNAME =~ -(test|testing)- ]] && TIER="test"
 
-RED="\033[01;31m"
-GREEN="\033[01;32m"
-YELLOW="\033[01;33m"
-BLUE="\033[01;34m"
-NOCOLOR="\033[m"
+BOLD="$(tput bold)"
+RED="$(tput setaf 1)"
+GREEN="$(tput setaf 2)"
+YELLOW="$(tput setaf 3)"
+BLUE="$(tput setaf 4)"
+MAGENTA="$(tput setaf 5)"
+CYAN="$(tput setaf 6)"
+WHITE="$(tput setaf 7)"
+NOCOLOR="$(tput sgr0)"
 
-HOSTCOLOR=$RED
-[ "$TIER" == "int" ] && HOSTCOLOR=$YELLOW
-[ "$TIER" == "test" ] && HOSTCOLOR=$GREEN
+HOSTCOLOR="${BOLD}${RED}"
+[ "$TIER" == "int" ] && HOSTCOLOR="${BOLD}${YELLOW}"
+[ "$TIER" == "test" ] && HOSTCOLOR="${BOLD}${GREEN}"
 
-USERCOLOR=$RED
-[[ ${EUID} != 0 ]] && USERCOLOR=$GREEN
+USERCOLOR="${BOLD}${RED}"
+[[ ${EUID} != 0 ]] && USERCOLOR="${BOLD}${GREEN}"
 
-PS1="${USERCOLOR}\\u${NOCOLOR}@${HOSTCOLOR}\\h${NOCOLOR}:\\w\\$ "
+PS1="\[${USERCOLOR}\]\u@\[${HOSTCOLOR}\]\h\[${NOCOLOR}\]:\w\$ "
