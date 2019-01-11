@@ -19,4 +19,4 @@ HOSTCOLOR="${BOLD}${RED}"
 USERCOLOR="${BOLD}${RED}"
 [[ ${EUID} != 0 ]] && USERCOLOR="${BOLD}${GREEN}"
 
-PS1="\[${USERCOLOR}\]\u@\[${HOSTCOLOR}\]\h\[${NOCOLOR}\]:\w\$ "
+PS1="\\[${USERCOLOR}\\]\\u@\\[${HOSTCOLOR}\\]\\h\\[${NOCOLOR}\\]:\\w\\$ "
