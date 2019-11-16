@@ -46,10 +46,10 @@ _monitor_host () {
     tmux rename-window $host
     tmux split-window -v -p 20 "ssh root@$host"
     tsk "journalctl -f | ccze -A -o nolookups"
-    tmux select-pane -t0
+    tmux select-pane -t 0
     tmux split-window -h -p 45 "ssh root@$host"
     tsk "htop"
-    tmux select-pane -t0
+    tmux select-pane -t 0
     tsk "ssh root@$host"
     tsk "dstat -larm"
 }
@@ -124,5 +124,32 @@ _tmux_4 () {
     tmux split-window -v
     tmux select-pane -t 0
     tmux split-window -v
+    tmux select-pane -t 0
+}
+
+_tmux_6 () {
+    tmux split-window -h
+    tmux split-window -v -p66
+    tmux select-pane -t 2
+    tmux split-window -v
+    tmux select-pane -t 0
+    tmux split-window -v -p66
+    tmux select-pane -t 1
+    tmux split-window
+    tmux select-pane -t 0
+}
+
+_tmux_8 () {
+    tmux split-window -h
+    tmux split-window -v
+    tmux split-window -v
+    tmux select-pane -t 1
+    tmux split-window -v
+
+    tmux select-pane -t 0
+    tmux split-window -v
+    tmux split-window -v
+    tmux select-pane -t 0
+    tmux split-window
     tmux select-pane -t 0
 }
