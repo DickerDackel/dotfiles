@@ -127,16 +127,22 @@ _tmux_4 () {
     tmux select-pane -t 0
 }
 
+_tmux_3h () {
+    tmux split-window -h -p66
+    tmux split-window -h
+}
+
+_tmux_3v () {
+    tmux split-window -v -p 66
+    tmux split-window -v
+}
+
 _tmux_6 () {
     tmux split-window -h
-    tmux split-window -v -p66
-    tmux select-pane -t 2
-    tmux split-window -v
-    tmux select-pane -t 0
-    tmux split-window -v -p66
-    tmux select-pane -t 1
-    tmux split-window
-    tmux select-pane -t 0
+    tm 3v
+    tmux select-pane -t0
+    tm 3v
+    tmux select-pane -t0
 }
 
 _tmux_8 () {
