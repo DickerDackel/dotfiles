@@ -1,28 +1,34 @@
-tmh () {
-    local layout optstring opt OPTIND OPTARG
-    layout="tiled"
+alias tmux='tmux -2'
 
-    optstring="hl:"
+tmh () {
+    local optstring opt user OPTIND
+
+    optstring="r"
+    user=''
     while getopts "$optstring" opt; do
-	case "$opt" in
-	    l) layout="$OPTARG" ;;
-	    *)
+	case $opt in
+	    r)
+		user='root@'
+		;;
+	    h|*)
 		cat <<-EOF
-			Usage: tmh [-l layout]
-			    creates tmux panes for all \$VHOSTS
-			    Default layout is even-vertical
+Usage: $0 [-r] HOSTNAME COMMANDS...
+    Connects to HOSTNAME via ssh, optionally as root (-r)
+
 EOF
 		return 1
 		;;
 	esac
     done
     shift $(( $OPTIND - 1 ))
+    host=$1; shift 1
+    command="$@"
 
-    for h in $VHOSTS; do
-	tmux split-window "ssh $h"
-	tmux select-layout $layout
+    tsk "ssh ${user}$host"
+    for cmd in "$@"; do
+	tsk "$cmd"
     done
-}
+} 
 
 [ -n "$SUDO_USER" ] && alias tmux="tmux -L $SUDO_USER"
 
@@ -127,6 +133,23 @@ _tmux_4 () {
     tmux select-pane -t 0
 }
 
+_tmux_4h () {
+    host=$1; shift 1
+    tm 4
+    for pane in $( seq 0 3 ); do
+	tmux select-pane -t$pane
+	tsk "ssh $host"
+    done
+    tmux select-pane -t0
+}
+
+_tmux_3 () {
+    tmux split-window -h
+    tmux select-pane -t1
+    tmux split-window -v
+    tmux select-pane -t0
+}
+
 _tmux_3h () {
     tmux split-window -h -p66
     tmux split-window -h
@@ -158,4 +181,12 @@ _tmux_8 () {
     tmux select-pane -t 0
     tmux split-window
     tmux select-pane -t 0
+}
+
+connect () {
+    tmux set-window-option synchronize-panes on
+    tsk "ssh $@"
+    tsk C-l
+    tmux set-window-option synchronize-panes off
+    tmux select-pane -t0
 }
