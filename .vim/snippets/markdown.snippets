@@ -1,0 +1,187 @@
+snippet LIPSUM
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+
+	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+
+snippet HOWTO
+	LINE BREAKS
+	===========
+
+	A single line/paragraph.
+
+	Paragraphs are separated by a blank line.
+
+	A line break within the same paragraph..
+	is done by 2 spaces at the end of the line.  So this is one paragraph.
+
+
+	HEADERS
+	=======
+
+	# H1
+	## H2
+	### H3
+	#### H4
+	##### H5
+	###### H6
+
+	Alternative notation using underlines.
+
+	H1
+	==
+
+	H2
+	--
+
+
+	BASIC STYLES
+	============
+
+	Emphasis/Italics are marked with *asterisks* or _underscores_.
+	Bold/Strong are suddounded by **double-asterisks** or __double-underscores__.
+	Emphasis and bold **can _be_ combined**.
+	Strikeout is wrapped by ~~two tildes~~.
+
+
+	LISTS
+	=====
+
+	Leading or trailing spaces are shown as '.' here.
+	Actual list numbers are not relevant, it just need to be numbers
+
+	1. Ordered
+	2. List
+	  * Unordered
+	  * nested list
+	3. Ordered list continuation
+	  1. Ordered
+	  1. nested list
+
+	* unordered list
+	- unordered list
+	+ unordered list
+
+	...Indented paragraph within a list are indicated by at least 1 leading space.
+
+	...Line breaks within indented paragraphs are created just like..
+	...normal paragraphs described above..
+
+
+	LINKS
+	=====
+
+	[This is an inline link](https://indieandmore.photography)
+
+	[Inline link with title](https://indieandmore.photography Music Photography)
+
+	[In-doc link][in-doc anchor]
+
+	[Footnote style in-doc link][1]
+
+	In doc links can also just [address the anchor]
+
+	[local filesystem link](sources/main.py)
+
+	URLs and URLs wrapped in angle brackets, like
+	https://indieandmore.photography will also get converted to links.
+	Same goes for gmail.com
+
+	Delimiting text to separate from the anchors
+
+	[in-doc-anchor] In-doc linked here.
+	[1] Footnote anchored here.
+	[address the anchor] will lead you here.
+
+
+	IMAGES
+	======
+
+	Inline Image:
+	![Your's truly](https://www.indieandmore.photography/wp-content/uploads/2016/02/DSCF1410.jpg "Caption")
+
+	Referenced image:
+	![Your's truly][selfie]
+
+	[selfie]: https://www.indieandmore.photography/wp-content/uploads/2016/02/DSCF1410.jpg "Caption"
+
+
+	CODE AND SYNTAX HIGHLIGHTING
+	============================
+
+	Inline commands are `surrounded by backticks`.
+
+	Code blocks can be prefixed with either 4 spaces on each line, or preferably wrapped with three backticks.
+
+	Code with syntax highlighting if supported:
+
+	```python
+	for i in range(10):
+	    print(i)
+	```
+
+	And without syntax highlighting:
+
+	```
+	Code block without specified languate, so plain text only:
+	```
+
+	TABLES
+	======
+
+	Tables are a markdown extension and not supported everywhere.
+
+	Colons mark where the alignment is anchored.  Align-left is default.
+
+	Headers and columns are separated by 3 or more dashes.
+	Left and right borders are optional.
+	Cells don't have to be aligned.
+
+	| Username | Centered | Right aligned |
+	| -------- |:--------:| -------------:|
+	| root     | 1        |        123.45 |
+	| michael  | 1000     |         12.34 |
+
+	Username | Centerd | Right aligned
+	--- |:---:| ---:
+	root | 1 | 123.45
+	michael | 1000 | 12.34
+
+
+	BLOCKQUOTES
+	===========
+
+	> Highlight blockquotes by prefixing
+	> each line with a angle bracket.
+
+	Blockquotes may contain markup.
+
+
+	INLINE HTML
+	===========
+
+	Just do it
+
+
+	HORIZONTAL RULERS
+	=================
+
+	Three or more... dashes, asterisks or underscores.
+
+	dashes
+	------
+
+	asterisks
+	*********
+
+	or underscores
+	______________
+
+
+	YOUTUBE VIDEOS
+	==============
+
+	[selfie]: https://www.indieandmore.photography/wp-content/uploads/2016/02/DSCF1410.jpg "Caption"
+	[![Caption](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=oHg5SJYRHA0)
+
