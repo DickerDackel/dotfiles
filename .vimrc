@@ -112,6 +112,7 @@ set esckeys
 set mouse=a
 set smartindent
 set shiftwidth=4
+set noshiftround
 set smarttab
 set visualbell
 set wildmenu
