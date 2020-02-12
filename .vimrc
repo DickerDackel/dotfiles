@@ -63,8 +63,8 @@ call vundle#rc()
 
     " Fix those fcking bracket indents!
     Plugin 'vimjas/vim-python-pep8-indent'
-    Plugin 'vim-syntastic/syntastic'
-    Plugin 'jiangmiao/auto-pairs'
+    "Plugin 'jiangmiao/auto-pairs'
+    Plugin 'nvie/vim-flake8'
 
 call vundle#end() 
 
@@ -159,18 +159,6 @@ filetype plugin indent on
     " --------------------------------
 	let g:SimplyFold_docstring_preview = 1
 
-    " --------------------------------
-    " Syntastic
-    " --------------------------------
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
-
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-
 " ======================================================================
 " My normal stuff
 " ======================================================================
@@ -211,6 +199,8 @@ set nowrap
 
 :noremap <leader>n :set invnumber<CR>
 
+:noremap <leader><Space> dipO<Esc>
+
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
@@ -229,7 +219,7 @@ set wildmode=list:longest
 set foldmethod=syntax
 :hi Folded term=NONE ctermfg=red ctermbg=NONE
 :hi Search term=reverse ctermfg=black ctermbg=yellow
-set iskeyword=48-57,A-Z,a-z
+set iskeyword=48-57,A-Z,a-z,_
 " set matchpairs+=<:>
 set showmatch
 set background=dark
