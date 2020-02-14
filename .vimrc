@@ -21,16 +21,6 @@ call vundle#rc()
     "-------------------------------------------------------------------
     " Keepers
     "-------------------------------------------------------------------
-    " fancy status bar
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
-    let g:airline_exclude_preview = 0
-    let g:airline#extensions#tagbar#enabled = 1
-    "let g:airline#extensions#tagbar#flags = ''
-    "let g:airline#extensions#tagbar#flags = 'f'
-    "let g:airline#extensions#tagbar#flags = 's'
-    "let g:airline#extensions#tagbar#flags = 'p'
-
     " Helpful
     Plugin 'kien/ctrlp.vim'
     Plugin 'mhinz/vim-startify'
@@ -39,6 +29,10 @@ call vundle#rc()
     Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
+
+    " fancy status bar
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
 
     " Snippets - These belong together
     Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -69,7 +63,8 @@ call vundle#rc()
 
     " Fix those fcking bracket indents!
     Plugin 'vimjas/vim-python-pep8-indent'
-    Plugin 'vim-syntastic/syntastic'
+    "Plugin 'jiangmiao/auto-pairs'
+    Plugin 'nvie/vim-flake8'
 
 call vundle#end() 
 
@@ -78,6 +73,17 @@ filetype plugin indent on
 " ======================================================================
 " Settings for the plugins above
 " ======================================================================
+
+    " --------------------------------
+    " Airline
+    " --------------------------------
+	let g:airline_exclude_preview = 0
+	let g:airline#extensions#tagbar#enabled = 0
+	"let g:airline#extensions#tagbar#flags = ''
+	"let g:airline#extensions#tagbar#flags = 'f'
+	"let g:airline#extensions#tagbar#flags = 's'
+	"let g:airline#extensions#tagbar#flags = 'p'
+
     " --------------------------------
     " Pencil
     " --------------------------------
@@ -88,9 +94,24 @@ filetype plugin indent on
 	augroup END
 
     " --------------------------------
+    " jedi-vim
+    " --------------------------------
+	let g:jedi#popup_on_dot = 0
+	let g:jedi#show_call_signatures = 2
+	let g:jedi#use_splits_not_buffers = "bottom"
+	let g:jedi#popup_select_first = 0
+
+
+
+    " --------------------------------
     " goyo
     " --------------------------------
 	:noremap <leader>G :Goyo<CR>
+
+    " --------------------------------
+    " NERDTree
+    " --------------------------------
+	:noremap <leader>T :NERDTreeToggle<CR>
 
     " --------------------------------
     " Tagbar
@@ -138,18 +159,6 @@ filetype plugin indent on
     " --------------------------------
 	let g:SimplyFold_docstring_preview = 1
 
-    " --------------------------------
-    " Syntastic
-    " --------------------------------
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
-
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-
 " ======================================================================
 " My normal stuff
 " ======================================================================
@@ -190,6 +199,8 @@ set nowrap
 
 :noremap <leader>n :set invnumber<CR>
 
+:noremap <leader><Space> dipO<Esc>
+
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
@@ -208,7 +219,7 @@ set wildmode=list:longest
 set foldmethod=syntax
 :hi Folded term=NONE ctermfg=red ctermbg=NONE
 :hi Search term=reverse ctermfg=black ctermbg=yellow
-set iskeyword=48-57,A-Z,a-z
+set iskeyword=48-57,A-Z,a-z,_
 " set matchpairs+=<:>
 set showmatch
 set background=dark
