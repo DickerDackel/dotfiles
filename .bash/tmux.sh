@@ -33,12 +33,16 @@ EOF
 [ -n "$SUDO_USER" ] && alias tmux="tmux -L $SUDO_USER"
 
 tm () {
-    [ -z "$TMUX" ] && echo "Not inside a tmux session.  Cancelled." && return 1
-
     local recipe
-    recipe=$1; shift 1
 
-    _tmux_$recipe "$@"
+    if [ $# = 0 ]; then
+	tmux a || tmux
+    else
+	[ -z "$TMUX" ] && echo "Not inside a tmux session.  Cancelled." && return 1
+
+	recipe=$1; shift 1
+	_tmux_$recipe "$@"
+    fi
 }
 
 tsk () {
