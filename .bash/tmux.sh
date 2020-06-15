@@ -1,5 +1,15 @@
 alias tmux='tmux -2'
 
+tmhs () {
+    for h in "$@"; do
+	tmux split-window
+	tsk "ssh root@$h"
+	tmux select-pane -t0
+    done
+    tsk "exit"
+    tmux select-layout tiled
+}
+
 tmh () {
     local optstring opt user OPTIND
 
