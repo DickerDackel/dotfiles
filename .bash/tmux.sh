@@ -2,10 +2,10 @@ alias tmux='tmux -2'
 
 tmhs () {
     for h in "$@"; do
-	tmux split-window
-	tsk "ssh $h"
-	tmux select-pane -t0
+	tmux split-window "ssh $h"
+	tmux select-layout tiled
     done
+    tmux select-pane -t0
     tsk "exit"
     tmux select-layout tiled
 }
