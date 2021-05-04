@@ -3,13 +3,24 @@
 
 [push]
     default = simple
+
+[pull]
+    rebase = false
+
+[credential]
+    helper = store --file ~/.git-credentials
+
 [diff]
     tool = vimdiff
+
 [merge]
     tool = vimmdiff
+
 [difftool]
     prompt = false
+
 [core]
     editor = vim
+
 [alias]
-    d = difftool
+    dt = difftool
