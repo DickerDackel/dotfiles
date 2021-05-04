@@ -127,6 +127,7 @@ filetype plugin indent on
     " snipmate
     " --------------------------------
 	let g:snips_author = 'Michael Lamertz'
+	let g:snipMate = { 'snippet_version' : 1 }
 
     " --------------------------------
     " from the limelight homepage
