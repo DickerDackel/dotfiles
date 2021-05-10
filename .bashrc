@@ -13,19 +13,16 @@ export LESS=-isSXR
 export PAGER=less
 export EDITOR=vim
 
-#[ -n "$TMUX" ] && TERM=screen-256color || TERM=xterm-256color
-#export TERM
-
 for dir in \
+    /sbin \
+    /usr/sbin \
     ~/.local/bin \
     ~/bin \
-    ~/opt/bin \
-    /opt/*/bin \
     /usr/local/bin \
-    /sbin \
-    /usr/sbin
+    ~/opt/bin \
+    /opt/*/bin
 do
-    [ -d $dir ] && PATH=$PATH:$dir
+    [ -d $dir ] && PATH=$dir:$PATH
 done
 PATH=~/opt/bin:$PATH
 export PATH
