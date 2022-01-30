@@ -1,0 +1,11 @@
+bin/
+lib/
+include/
+share/
+lib64
+*.swp
+pyvenv.cfg
+pip-selfcheck.json
+pcopy.egg-info/
+__pycache__/
+
