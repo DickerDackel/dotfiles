@@ -1,7 +1,7 @@
 alias activate="source .venv/bin/activate"
 
 mkvenv () {
-    name=$( dirname $PWD )
+    name=$( basename $PWD )
     python -m venv --prompt "$name" .venv
     activate
 }
