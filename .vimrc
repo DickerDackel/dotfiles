@@ -87,11 +87,14 @@ filetype plugin indent on
     " --------------------------------
     " Pencil
     " --------------------------------
-	augroup pencil
-	    autocmd!
-	    autocmd FileType markdown,mkd call pencil#init()
-	    autocmd FileType text         call pencil#init()
-	augroup END
+	"  Auto activation of pencil disabled, since it was annoying.  Use
+	"  :PencilToggle or :PencilOn instead when you need it.
+	"augroup pencil
+	    "autocmd!
+	    "autocmd FileType markdown,mkd call pencil#init()
+	    "autocmd FileType text         call pencil#init()
+	"augroup END
+	:noremap <leader>P :PencilToggle<CR>
 
     " --------------------------------
     " jedi-vim
@@ -100,8 +103,6 @@ filetype plugin indent on
 	let g:jedi#show_call_signatures = 2
 	let g:jedi#use_splits_not_buffers = "bottom"
 	let g:jedi#popup_select_first = 0
-
-
 
     " --------------------------------
     " goyo
@@ -154,6 +155,8 @@ filetype plugin indent on
 	" Highlighting priority (default: 10)
 	"   Set it to -1 not to overrule hlsearch
 	let g:limelight_priority = -1
+
+	:noremap <leader>l :Limelight [0.0 ~ 1.0]<CR>
 
     " --------------------------------
     " SimplyFold
