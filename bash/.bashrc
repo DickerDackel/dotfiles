@@ -8,7 +8,10 @@ shopt -s huponexit
 shopt -s no_empty_cmd_completion
 
 export PS1='\h:\w\$ '
-export HISTCONTROL=ignoreboth HISTTIMEFORMAT="%F %T"
+export HISTCONTROL=ignoreboth
+export HISTSIZE=1073741824
+export HISTFILESIZE=1073741824
+export HISTTIMEFORMAT="%F %T"
 export LESS=-isSXR
 export PAGER=less
 export EDITOR=vim

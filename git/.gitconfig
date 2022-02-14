@@ -24,3 +24,6 @@
 
 [alias]
     dt = difftool
+[user]
+	email = michael.lamertz@gmail.com
+	name = Michael Lamertz
