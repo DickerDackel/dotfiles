@@ -8,7 +8,7 @@ cleanpath () {
 
     for i in "${i_path[@]}"; do
 	[ -z "$i" ] && continue
-	[ -z "${seen[$i]}" ] && o_path+=( $i )
+	[ -z "${seen[$i]}" ] && o_path+=( "$i" )
 	seen[$i]=1
     done
 
