@@ -14,6 +14,11 @@ endif
 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
+if has('windows')
+    set rtp-=~/.vimfiles
+    set rtp+=~/.vim
+endif
+
 call vundle#rc()
     " Required because Vundle would otherwise remove itself on VundleClean
     Plugin 'gmarik/vundle'
@@ -193,6 +198,8 @@ set hlsearch
 :noremap <leader>w :set invwrap<CR>
 set nowrap
 
+:noremap <leader>e yy:@"<CR>
+
 if has('windows')
     :noremap <leader>v :sp ~/_vimrc<CR><C-W>_
 else
@@ -282,3 +289,6 @@ augroup END
 
 " add matchit native plugin (:help matchit)
 runtime macros/matchit.vim
+
+:iabbrev ml@ michael.lamertz@gmail.com
+:iabbrev ml! Michael Lamertz
