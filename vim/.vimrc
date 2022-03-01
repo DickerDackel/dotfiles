@@ -60,6 +60,7 @@ call vundle#rc()
 
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'davidhalter/jedi-vim'
+    "Plugin 'ervandew/supertab.git'
 
     " Fix those fcking bracket indents!
     Plugin 'vimjas/vim-python-pep8-indent'
@@ -176,11 +177,13 @@ if &diff
     colorscheme vividchalk
 endif
 
-:function! MyColourpatch()
+:function! MyPostPatch()
 :  hi Search term=reverse ctermfg=black ctermbg=yellow
 :  hi IncSearch ctermfg=yellow ctermbg=black
 :  hi Comment term=NONE ctermfg=Grey ctermbg=NONE
+:  hi Folded term=NONE ctermfg=red ctermbg=NONE
 :  hi ColorColumn ctermbg=234
+:  set iskeyword=@,48-57
 :endfunction
 
 :noremap <leader>p :set invpaste<CR>
@@ -190,7 +193,11 @@ set hlsearch
 :noremap <leader>w :set invwrap<CR>
 set nowrap
 
-:noremap <leader>v :sp ~/.vimrc<CR><C-W>_
+if has('windows')
+    :noremap <leader>v :sp ~/_vimrc<CR><C-W>_
+else
+    :noremap <leader>v :sp ~/.vimrc<CR><C-W>_
+endif
 :noremap <leader>V :source %<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 :set splitright
@@ -211,7 +218,7 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 " replaced by vim-airline
 "set statusline=%<%f\ %h%w%m%y%r%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
-set esckeys
+set magic
 set mouse=a
 set smartindent
 set shiftwidth=4
@@ -221,13 +228,14 @@ set visualbell
 set wildmenu
 set wildmode=list:longest
 set foldmethod=syntax
-:hi Folded term=NONE ctermfg=red ctermbg=NONE
-:hi Search term=reverse ctermfg=black ctermbg=yellow
-set iskeyword=48-57,A-Z,a-z,_
-" set matchpairs+=<:>
 set showmatch
+set backspace=3
+set virtualedit=block
 set background=dark
 set t_Co=256
+if !has('nvim')
+    set esckeys
+endif
 
 set sessionoptions=buffers
 
@@ -269,7 +277,7 @@ augroup filetypedetect
     au FileType mkd			setl autoindent colorcolumn=0 linebreak nonumber wrap
     au FileType markdown		setl autoindent colorcolumn=0 linebreak nonumber wrap
     au FileType text			setl autoindent colorcolumn=0 linebreak nonumber wrap
-    au BufNewFile,BufRead *		call MyColourpatch()
+    au BufNewFile,BufRead *		call MyPostPatch()
 augroup END
 
 " add matchit native plugin (:help matchit)
