@@ -237,7 +237,7 @@ set wildmenu
 set wildmode=list:longest
 set foldmethod=syntax
 set showmatch
-set backspace=3
+set backspace=indent,eol,start
 set virtualedit=block
 set background=dark
 set t_Co=256
