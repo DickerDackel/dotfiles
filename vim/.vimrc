@@ -29,6 +29,7 @@ call vundle#rc()
     " Helpful
     Plugin 'kien/ctrlp.vim'
     Plugin 'mhinz/vim-startify'
+    Plugin 'mg979/vim-visual-multi'
 
     " IDE stuff
     Plugin 'scrooloose/nerdcommenter'
