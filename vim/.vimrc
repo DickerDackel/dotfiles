@@ -14,7 +14,7 @@ endif
 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-if has('windows')
+if has('win32')
     set rtp-=~/.vimfiles
     set rtp+=~/.vim
 endif
@@ -201,7 +201,7 @@ set nowrap
 
 :noremap <leader>e yy:@"<CR>
 
-if has('windows')
+if has('win32')
     :noremap <leader>v :sp ~/_vimrc<CR><C-W>_
 else
     :noremap <leader>v :sp ~/.vimrc<CR><C-W>_
@@ -237,7 +237,7 @@ set wildmenu
 set wildmode=list:longest
 set foldmethod=syntax
 set showmatch
-set backspace=3
+set backspace=indent,eol,start
 set virtualedit=block
 set background=dark
 set t_Co=256
