@@ -14,7 +14,7 @@ endif
 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-if has('windows')
+if has('win32')
     set rtp-=~/.vimfiles
     set rtp+=~/.vim
 endif
@@ -201,7 +201,7 @@ set nowrap
 
 :noremap <leader>e yy:@"<CR>
 
-if has('windows')
+if has('win32')
     :noremap <leader>v :sp ~/_vimrc<CR><C-W>_
 else
     :noremap <leader>v :sp ~/.vimrc<CR><C-W>_
