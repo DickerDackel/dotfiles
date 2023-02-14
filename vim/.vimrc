@@ -62,7 +62,7 @@ call vundle#rc()
     Plugin 'reedes/vim-pencil'
 
     " Git integration
-    "Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-fugitive'
 
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'davidhalter/jedi-vim'
@@ -120,6 +120,13 @@ filetype plugin indent on
     " NERDTree
     " --------------------------------
 	:noremap <leader>T :NERDTreeToggle<CR>
+
+    " --------------------------------
+    " NERDCommenter
+    " --------------------------------
+        let NERDCommentEmptyLines = 1
+        let NERDDefaultAlign = 'left'
+        let NERDRemoveExtraSpaces = 1
 
     " --------------------------------
     " Tagbar
