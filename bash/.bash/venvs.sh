@@ -13,8 +13,8 @@ venv () {
 
 mkv () {
     if [ $# == 1 ]; then
-	python -m venv "$1"
+	python3 -m venv "$1"
     else
-	python -m venv .venv --prompt $( basename $( readlink -f $PWD ) )
+	python3 -m venv .venv --prompt $( basename $( readlink -f $PWD ) )
     fi
 }
