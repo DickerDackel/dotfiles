@@ -41,9 +41,11 @@ call vundle#rc()
     Plugin 'vim-airline/vim-airline-themes'
 
     " Snippets - These belong together
-    Plugin 'MarcWeber/vim-addon-mw-utils'
-    Plugin 'tomtom/tlib_vim'
-    Plugin 'garbas/vim-snipmate'
+    "Plugin 'MarcWeber/vim-addon-mw-utils'
+    "Plugin 'tomtom/tlib_vim'
+    "Plugin 'garbas/vim-snipmate'
+
+    Plugin 'SirVer/ultisnips'
     Plugin 'honza/vim-snippets'
 
     "-------------------------------------------------------------------
@@ -141,8 +143,16 @@ filetype plugin indent on
     " --------------------------------
     " snipmate
     " --------------------------------
-	let g:snips_author = 'Michael Lamertz'
-	let g:snipMate = { 'snippet_version' : 1 }
+    "  This seems broken and unmaintained.  Ultisnips requires python built
+    "  in, but I'll try this now
+	"let g:snips_author = 'Michael Lamertz'
+	"let g:snipMate = { 'snippet_version' : 1 }
+        "
+    " --------------------------------
+    " UltiSnips
+    " --------------------------------
+
+
 
     " --------------------------------
     " from the limelight homepage
