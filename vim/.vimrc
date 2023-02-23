@@ -152,8 +152,6 @@ filetype plugin indent on
     " UltiSnips
     " --------------------------------
 
-
-
     " --------------------------------
     " from the limelight homepage
     " --------------------------------
@@ -236,6 +234,9 @@ endif
 :noremap <leader>n :set invnumber<CR>
 
 :noremap <leader><Space> dipO<Esc>
+
+" Use Ctrl-L (redraw screen) to clear search highlighting temporarily
+:noremap <nowait><silent> <C-L> :noh<CR>
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
