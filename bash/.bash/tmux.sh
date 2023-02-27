@@ -1,4 +1,8 @@
-alias tmux='tmux -2'
+if [ -n "$SUDO_USER" ]; then
+    alias tmux="tmux -2 -L $SUDO_USER"
+else
+    alias tmux='tmux -2'
+fi
 
 tmhs () {
     for h in "$@"; do
@@ -40,7 +44,6 @@ EOF
     done
 } 
 
-[ -n "$SUDO_USER" ] && alias tmux="tmux -L $SUDO_USER"
 
 tm () {
     local recipe
