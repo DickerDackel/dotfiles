@@ -4,10 +4,7 @@ venv () {
     local v
 
     for d in venv .venv .; do
-	if [ -d $d ]; then
-	    . $d/bin/activate
-	    break
-	fi
+	[ -d "$d" ] && . $d/bin/activate && break
     done
 }
 
