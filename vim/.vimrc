@@ -27,7 +27,9 @@ call vundle#rc()
     " Keepers
     "-------------------------------------------------------------------
     " Helpful
-    Plugin 'kien/ctrlp.vim'
+    "kien/ctrlp is no longer maintained
+    "Plugin 'kien/ctrlp.vim'
+    Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'mhinz/vim-startify'
     Plugin 'mg979/vim-visual-multi'
 
@@ -55,6 +57,7 @@ call vundle#rc()
     " Distraction free writing
     Plugin 'junegunn/goyo.vim'
     Plugin 'junegunn/limelight.vim'
+    Plugin 'dense-analysis/ale'
 
     "-------------------------------------------------------------------
     " Experimental
@@ -66,12 +69,16 @@ call vundle#rc()
     " Git integration
     Plugin 'tpope/vim-fugitive'
 
+    " Abolish preserves case on find and replace, among other things
+    Plugin 'tpope/vim-abolish'
+
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'davidhalter/jedi-vim'
     "Plugin 'ervandew/supertab.git'
 
     " Fix those fcking bracket indents!
     Plugin 'vimjas/vim-python-pep8-indent'
+    " Don't use auto pairs, it's annoying as fuck!
     "Plugin 'jiangmiao/auto-pairs'
     Plugin 'nvie/vim-flake8'
 
@@ -185,6 +192,23 @@ filetype plugin indent on
     " --------------------------------
 	let g:SimplyFold_docstring_preview = 1
 
+    " --------------------------------
+    " ALE
+    " --------------------------------
+    :noremap <leader>A :ALEToggle<CR>
+    let g:ale_linters = {'python': ['flake8']}
+    let g:ale_sign_column_always = 1
+    let g:ale_sign_highlight_linenrs = 1
+    let g:ale_virtualtext_cursor = 'disabled'
+"    "let g:ale_virtualtext_column = 60
+"    let g:ale_echo_cursor = 
+"    let g:ale_virtualtext_cursor =
+    
+    :hi ALEErrorLine ctermbg=13
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+
 " ======================================================================
 " My normal stuff
 " ======================================================================
@@ -204,6 +228,9 @@ endif
 :  hi Comment term=NONE ctermfg=Grey ctermbg=NONE
 :  hi Folded term=NONE ctermfg=red ctermbg=NONE
 :  hi ColorColumn ctermbg=234
+:  hi LineNr ctermfg=7 ctermbg=0 guifg=LightGrey guibg=DarkGrey
+"  ALE left column
+:  hi clear SignColumn
 :  set iskeyword=@,48-57
 :endfunction
 
@@ -241,6 +268,12 @@ endif
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
+" Folding
+nnoremap f za
+vnoremap f za
+nnoremap F zA
+vnoremap F zA
+
 " replaced by vim-airline
 "set statusline=%<%f\ %h%w%m%y%r%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
@@ -253,7 +286,8 @@ set smarttab
 set visualbell
 set wildmenu
 set wildmode=list:longest
-set foldmethod=syntax
+set foldmethod=indent
+set foldnestmax=2
 set showmatch
 set backspace=indent,eol,start
 set virtualedit=block
@@ -309,5 +343,6 @@ augroup END
 " add matchit native plugin (:help matchit)
 runtime macros/matchit.vim
 
+:cabbrev help vert bo help
 :iabbrev ml@ michael.lamertz@gmail.com
 :iabbrev ml! Michael Lamertz
