@@ -346,3 +346,4 @@ runtime macros/matchit.vim
 :cabbrev help vert bo help
 :iabbrev ml@ michael.lamertz@gmail.com
 :iabbrev ml! Michael Lamertz
+:cabbrev help vert bo help
