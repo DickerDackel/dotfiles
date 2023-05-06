@@ -268,6 +268,9 @@ endif
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
+" Make Ctrl-W m maximize the current pane
+nnoremap <C-W>m <C-W>\|<C-W>
+
 " Folding
 nnoremap f za
 vnoremap f za
