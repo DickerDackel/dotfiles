@@ -161,9 +161,9 @@ filetype plugin indent on
 	let g:UltiSnipsSnippetDirectories = ['ultisnips']
 	let g:UltiSnipsExpandTrigger = '<tab>'
 	let g:UltiSnipsListSnippets = '<s-tab>'
-	let g:UltiSnipsJumpForwardTrigger = '<tab>'
-	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-	let g:UltiSnipsEditSplit="vertical"
+	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+	let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+	let g:UltiSnipsEditSplit="context"
 
     " --------------------------------
     " from the limelight homepage
@@ -229,6 +229,7 @@ if &diff
 endif
 
 :function! MyPostPatch()
+:  hi CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=NONE
 :  hi Search term=reverse ctermfg=black ctermbg=yellow
 :  hi IncSearch ctermfg=yellow ctermbg=black
 :  hi Comment term=NONE ctermfg=Grey ctermbg=NONE
@@ -295,7 +296,10 @@ set smarttab
 set visualbell
 set wildmenu
 set wildmode=list:longest
-set foldmethod=indent
+:noremap <leader>f :set foldmethod=manual<CR>
+:noremap <leader>F :set foldmethod=indent<CR>
+set foldmethod=manual
+" set foldmethod=indent
 set foldnestmax=2
 set showmatch
 set backspace=indent,eol,start
@@ -355,4 +359,3 @@ runtime macros/matchit.vim
 :cabbrev help vert bo help
 :iabbrev ml@ michael.lamertz@gmail.com
 :iabbrev ml! Michael Lamertz
-:cabbrev help vert bo help
