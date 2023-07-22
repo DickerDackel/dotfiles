@@ -31,24 +31,36 @@ call vundle#rc()
     "Plugin 'kien/ctrlp.vim'
     Plugin 'ctrlpvim/ctrlp.vim'
     Plugin 'mhinz/vim-startify'
-    Plugin 'mg979/vim-visual-multi'
+    if v:version >= 800
+	Plugin 'mg979/vim-visual-multi'
+    endif
 
     " IDE stuff
     Plugin 'scrooloose/nerdcommenter'
-    Plugin 'scrooloose/nerdtree'
+    " Just using the builtin netrc now
+    " Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
 
+    " Python
+    if has('python3')
+	Plugin 'davidhalter/jedi-vim'
+    endif
+
+    " Fix those fcking bracket indents!
+    Plugin 'vimjas/vim-python-pep8-indent'
+    Plugin 'nvie/vim-flake8'
+
     " fancy status bar
-    Plugin 'vim-airline/vim-airline'
-    Plugin 'vim-airline/vim-airline-themes'
+    if !has('win32')
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
+    endif
 
     " Snippets - These belong together
-    "Plugin 'MarcWeber/vim-addon-mw-utils'
-    "Plugin 'tomtom/tlib_vim'
-    "Plugin 'garbas/vim-snipmate'
-
-    Plugin 'SirVer/ultisnips'
-    Plugin 'honza/vim-snippets'
+    if v:version >= 800
+	Plugin 'SirVer/ultisnips'
+	Plugin 'honza/vim-snippets'
+    endif
 
     "-------------------------------------------------------------------
     " Evaluate
@@ -59,28 +71,32 @@ call vundle#rc()
     Plugin 'junegunn/limelight.vim'
     Plugin 'dense-analysis/ale'
 
+    " Line wrapping for distraction free writing
+    Plugin 'reedes/vim-pencil'
+
     "-------------------------------------------------------------------
     " Experimental
     "-------------------------------------------------------------------
-
-    " Line wrapping for distraction free writing
-    Plugin 'reedes/vim-pencil'
+    " Debugging
+    Plugin 'puremourning/vimspector'
 
     " Git integration
     Plugin 'tpope/vim-fugitive'
 
-    " Abolish preserves case on find and replace, among other things
-    Plugin 'tpope/vim-abolish'
+    " FZF
+    Plugin 'junegunn/fzf'
+    Plugin 'junegunn/fzf.vim'
 
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'davidhalter/jedi-vim'
-    "Plugin 'ervandew/supertab.git'
+    " Alternative to nerdcommenter
+    Plugin 'tpope/vim-commentary'
 
-    " Fix those fcking bracket indents!
-    Plugin 'vimjas/vim-python-pep8-indent'
+    "-------------------------------------------------------------------
+    " Trashbin, tested and removed
+    "-------------------------------------------------------------------
     " Don't use auto pairs, it's annoying as fuck!
-    "Plugin 'jiangmiao/auto-pairs'
-    Plugin 'nvie/vim-flake8'
+    " Plugin 'jiangmiao/auto-pairs'
+    " Plugin 'ervandew/supertab.git'
+    " Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end() 
 
