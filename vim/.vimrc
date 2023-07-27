@@ -29,11 +29,9 @@ call vundle#rc()
     " Helpful
     "kien/ctrlp is no longer maintained
     "Plugin 'kien/ctrlp.vim'
-    Plugin 'ctrlpvim/ctrlp.vim'
-    Plugin 'mhinz/vim-startify'
-    if v:version >= 800
-	Plugin 'mg979/vim-visual-multi'
-    endif
+    "ctrlpvim/ctrlp.vim now replaced with fzf
+    "Plugin 'ctrlpvim/ctrlp.vim'
+    "Plugin 'mhinz/vim-startify'
 
     " IDE stuff
     Plugin 'scrooloose/nerdcommenter'
@@ -97,6 +95,9 @@ call vundle#rc()
     " Plugin 'jiangmiao/auto-pairs'
     " Plugin 'ervandew/supertab.git'
     " Plugin 'altercation/vim-colors-solarized'
+    " if v:version >= 800
+	" Plugin 'mg979/vim-visual-multi'
+    " endif
 
 call vundle#end() 
 
@@ -142,16 +143,11 @@ filetype plugin indent on
 	:noremap <leader>G :Goyo<CR>
 
     " --------------------------------
-    " NERDTree
+    " fzf
     " --------------------------------
-	:noremap <leader>T :NERDTreeToggle<CR>
-
-    " --------------------------------
-    " NERDCommenter
-    " --------------------------------
-        let NERDCommentEmptyLines = 1
-        let NERDDefaultAlign = 'left'
-        let NERDRemoveExtraSpaces = 1
+	:noremap <C-p> :Files<Space>
+	:noremap <leader>g :GFiles<CR>
+	:noremap <leader>b :Buffers<CR>
 
     " --------------------------------
     " Tagbar
@@ -161,7 +157,7 @@ filetype plugin indent on
     " --------------------------------
     " ctrlp
     " --------------------------------
-	let g:ctrlp_show_hidden=1
+	" let g:ctrlp_show_hidden=1
 
     " --------------------------------
     " snipmate
