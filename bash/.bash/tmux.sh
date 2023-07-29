@@ -207,3 +207,13 @@ connect () {
     tmux set-window-option synchronize-panes off
     tmux select-pane -t0
 }
+
+tmgrid () {
+    for h in "$@"; do
+	tmux split-window "exec ssh $h"
+	tmux select-layout tiled
+    done
+    tmux select-pane -t0
+    tmux setw synchronize-panes on
+    exit
+}
