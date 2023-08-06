@@ -26,17 +26,9 @@ call vundle#rc()
     "-------------------------------------------------------------------
     " Keepers
     "-------------------------------------------------------------------
-    " Helpful
-    "kien/ctrlp is no longer maintained
-    "Plugin 'kien/ctrlp.vim'
-    "ctrlpvim/ctrlp.vim now replaced with fzf
-    "Plugin 'ctrlpvim/ctrlp.vim'
-    "Plugin 'mhinz/vim-startify'
+    Plugin 'mhinz/vim-startify'
 
     " IDE stuff
-    Plugin 'scrooloose/nerdcommenter'
-    " Just using the builtin netrc now
-    " Plugin 'scrooloose/nerdtree'
     Plugin 'majutsushi/tagbar'
 
     " Python
@@ -88,17 +80,6 @@ call vundle#rc()
     " Alternative to nerdcommenter
     Plugin 'tpope/vim-commentary'
 
-    "-------------------------------------------------------------------
-    " Trashbin, tested and removed
-    "-------------------------------------------------------------------
-    " Don't use auto pairs, it's annoying as fuck!
-    " Plugin 'jiangmiao/auto-pairs'
-    " Plugin 'ervandew/supertab.git'
-    " Plugin 'altercation/vim-colors-solarized'
-    " if v:version >= 800
-	" Plugin 'mg979/vim-visual-multi'
-    " endif
-
 call vundle#end() 
 
 filetype plugin indent on
@@ -145,7 +126,7 @@ filetype plugin indent on
     " --------------------------------
     " fzf
     " --------------------------------
-	:noremap <C-p> :Files<Space>
+	:noremap <C-p> :Files<CR>
 	:noremap <leader>g :GFiles<CR>
 	:noremap <leader>b :Buffers<CR>
 
@@ -250,7 +231,7 @@ endif
 :  hi LineNr ctermfg=7 ctermbg=0 guifg=LightGrey guibg=DarkGrey
 "  ALE left column
 :  hi clear SignColumn
-:  set iskeyword=@,48-57
+:  set iskeyword=@,48-57,_
 :endfunction
 
 :noremap <leader>p :set invpaste<CR>
