@@ -284,6 +284,8 @@ set magic
 set mouse=a
 set smartindent
 set shiftwidth=4
+set textwidth=78
+set formatoptions-=t
 set noshiftround
 set smarttab
 set visualbell
