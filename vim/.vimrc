@@ -304,6 +304,7 @@ set t_Co=256
 if !has('nvim')
     set esckeys
 endif
+" set autochdir
 
 set sessionoptions=buffers
 
