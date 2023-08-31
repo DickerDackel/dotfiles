@@ -8,7 +8,7 @@ set nocompatible
 " https://www.reddit.com/r/vim/comments/43ufir/should_i_install_vundle_as_a_submodule_in_my/czlg8uj/
 " Vundle bootstrap
 if !filereadable($HOME . '/.vim/bundle/vundle/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
-    exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/vundle/'
+    exec '!git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle/'
 endif
 
 
@@ -21,7 +21,7 @@ endif
 
 call vundle#rc()
     " Required because Vundle would otherwise remove itself on VundleClean
-    Plugin 'gmarik/vundle'
+    Plugin 'vundlevim/vundle'
 
     "-------------------------------------------------------------------
     " Keepers
@@ -68,7 +68,7 @@ call vundle#rc()
     " Experimental
     "-------------------------------------------------------------------
     " Debugging
-    Plugin 'puremourning/vimspector'
+    " Plugin 'puremourning/vimspector'
 
     " Git integration
     Plugin 'tpope/vim-fugitive'
