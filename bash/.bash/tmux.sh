@@ -67,8 +67,7 @@ _monitor_host () {
     host=$1; shift 1
 
     tmux rename-window $host
-    tmux split-window -v -p 20 "ssh -t root@$host"
-    tsk "journalctl -f | ccze -A -o nolookups"
+    tmux split-window -v -p 20 "ssh -t root@$host 'journalctl -f | ccze -A -o nolookups'"
 
     if [[ $# != 0 ]]; then
 	tmux select-pane -t 0
@@ -77,17 +76,14 @@ _monitor_host () {
 	tmux split-window -v -l 50% "ssh -t root@$host $1"
 	shift 1
 	for cmd in "$@"; do
-	    tmux split-window -h -l $width% "ssh -t root@$host"
-	    tsk "$cmd"
+	    tmux split-window -h -l $width% "ssh -t root@$host $cmd"
 	done
     fi
 
     tmux select-pane -t 0
-    tmux split-window -h -p 45 "ssh -t root@$host"
-    tsk "htop"
+    tmux split-window -h -p 45 "ssh -t root@$host htop"
     tmux select-pane -t 0
-    tsk "ssh -t root@$host"
-    tsk "dstat -larm"
+    exec ssh -t root@$host "dstat -larm"
 }
 
 _tmux_bundle () {
