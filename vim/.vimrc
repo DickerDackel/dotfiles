@@ -1,55 +1,48 @@
 set nocompatible
 
-" ======================================================================
-" use Vundle to manage packages
-" ======================================================================
-
-" Brilliant:
-" https://www.reddit.com/r/vim/comments/43ufir/should_i_install_vundle_as_a_submodule_in_my/czlg8uj/
-" Vundle bootstrap
-if !filereadable($HOME . '/.vim/bundle/vundle/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
-    exec '!git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle/'
-endif
-
-
+" Dunno why, was needed for some reason
 filetype off
-set rtp+=~/.vim/bundle/vundle/
 if has('win32')
     set rtp-=~/.vimfiles
     set rtp+=~/.vim
 endif
 
-call vundle#rc()
-    " Required because Vundle would otherwise remove itself on VundleClean
-    Plugin 'vundlevim/vundle'
+" ======================================================================
+" use vim-plug to manage packages
+" ======================================================================
+"
+" Bootstrap vim-plug:
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
+" 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+call plug#begin('~/.vim/plugged')
     "-------------------------------------------------------------------
     " Keepers
     "-------------------------------------------------------------------
-    Plugin 'mhinz/vim-startify'
+    Plug 'mhinz/vim-startify'
 
     " IDE stuff
-    Plugin 'majutsushi/tagbar'
+    Plug 'majutsushi/tagbar'
 
     " Python
     if has('python3')
-	Plugin 'davidhalter/jedi-vim'
+	Plug 'davidhalter/jedi-vim'
     endif
 
     " Fix those fcking bracket indents!
-    Plugin 'vimjas/vim-python-pep8-indent'
-    Plugin 'nvie/vim-flake8'
+    Plug 'vimjas/vim-python-pep8-indent'
+    Plug 'nvie/vim-flake8'
 
     " fancy status bar
     if !has('win32')
-	Plugin 'vim-airline/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
     endif
 
     " Snippets - These belong together
     if v:version >= 800
-	Plugin 'SirVer/ultisnips'
-	Plugin 'honza/vim-snippets'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
     endif
 
     "-------------------------------------------------------------------
@@ -57,30 +50,30 @@ call vundle#rc()
     "-------------------------------------------------------------------
 
     " Distraction free writing
-    Plugin 'junegunn/goyo.vim'
-    Plugin 'junegunn/limelight.vim'
-    Plugin 'dense-analysis/ale'
+    Plug 'junegunn/goyo.vim'
+    Plug 'junegunn/limelight.vim'
+    Plug 'dense-analysis/ale'
 
     " Line wrapping for distraction free writing
-    Plugin 'reedes/vim-pencil'
+    Plug 'reedes/vim-pencil'
 
     "-------------------------------------------------------------------
     " Experimental
     "-------------------------------------------------------------------
     " Debugging
-    " Plugin 'puremourning/vimspector'
+    " Plug 'puremourning/vimspector'
 
     " Git integration
-    Plugin 'tpope/vim-fugitive'
+    Plug 'tpope/vim-fugitive'
 
     " FZF
-    Plugin 'junegunn/fzf'
-    Plugin 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
 
     " Alternative to nerdcommenter
-    Plugin 'tpope/vim-commentary'
+    Plug 'tpope/vim-commentary'
 
-call vundle#end() 
+call plug#end()
 
 filetype plugin indent on
 
