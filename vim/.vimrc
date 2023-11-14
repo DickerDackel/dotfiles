@@ -227,6 +227,9 @@ endif
 :  set iskeyword=@,48-57,_
 :endfunction
 
+" For whatever reason, normal redraw doesn't work when a log tail in the
+" backdrop vomits into the editor screen.
+"
 :noremap <leader>p :set invpaste<CR>
 set nopaste
 :noremap <leader>h :set invhlsearch<CR>
@@ -256,7 +259,7 @@ endif
 :noremap <leader><Space> dipO<Esc>
 
 " Use Ctrl-L (redraw screen) to clear search highlighting temporarily
-:noremap <nowait><silent> <C-L> :noh<CR>
+:noremap <nowait><silent> <C-L> :noh<CR>:redraw!<CR>
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
