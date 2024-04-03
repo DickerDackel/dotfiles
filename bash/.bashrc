@@ -50,15 +50,15 @@ alias more=$PAGER
 alias less=$PAGER
 alias hd='hexdump -v -e "\"%06.6_ao  \"   16/1  \"%02x \" \"  \"" -e "16/1 \"%_p\" \"\n\""'
 
-for i in /etc/profile.d/*.sh; do
-    if [ -r "$i" ]; then
-	if [ "${-#*i}" != "$-" ]; then
-	    . "$i"
-	else
-	    . "$i" >/dev/null
-	fi
-    fi
-done
+# for i in /etc/profile.d/*.sh; do
+#     if [ -r "$i" ]; then
+# 	if [ "${-#*i}" != "$-" ]; then
+# 	    . "$i"
+# 	else
+# 	    . "$i" >/dev/null
+# 	fi
+#     fi
+# done
 
 # Source all functions
 for f in ~/.bash/*; do
