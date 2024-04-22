@@ -349,7 +349,7 @@ augroup filetypedetect
     au BufNewFile,BufRead *.txt		set wrap wrapmargin=7
     au BufNewFile,BufRead *.kata	set wrap wrapmargin=7
     au BufNewFile,BufRead *.kata	set filetype=txt
-    au BufNewFile,BufRead *.sls		set filetype=yaml ts=4
+    au BufNewFile,BufRead *.sls		set filetype=yaml sw=4
 
     au FileType python			set expandtab smarttab autoindent smartindent number cursorline
     au FileType yaml			set expandtab smarttab autoindent smartindent number cursorline
