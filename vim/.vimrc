@@ -316,7 +316,7 @@ if !has('nvim')
 endif
 set noautochdir
 
-" Dunnu why i overrode that, defaults are much more useful:
+" Dunno why i overrode that, defaults are much more useful:
 " sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
 " set sessionoptions=buffers
 
