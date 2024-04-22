@@ -3,6 +3,10 @@ set nocompatible
 " Dunno why, was needed for some reason
 filetype off
 if has('win32')
+    " neovim needs pynvim for the LSP.  If you don't want to install it into
+    " every active venv, vim must be forced to use the system wide python
+    " instead of the venv.  Shitty, must be changed for every python update.
+    let g:python3_host_prog = 'c:/python312/python.exe'
     set rtp-=~/.vimfiles
     set rtp+=~/.vim
 endif
@@ -20,6 +24,7 @@ call plug#begin('~/.vim/plugged')
     " Keepers
     "-------------------------------------------------------------------
     Plug 'mhinz/vim-startify'
+    let g:startify_session_persistence = 1
 
     " IDE stuff
     Plug 'majutsushi/tagbar'
@@ -40,7 +45,7 @@ call plug#begin('~/.vim/plugged')
     endif
 
     " Snippets - These belong together
-    if v:version >= 800
+    if v:version >= 800 && has('python3')
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
     endif
@@ -53,6 +58,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/limelight.vim'
     Plug 'dense-analysis/ale'
+    Plug 'neovim/nvim-lspconfig'
 
     " Line wrapping for distraction free writing
     Plug 'reedes/vim-pencil'
@@ -65,6 +71,7 @@ call plug#begin('~/.vim/plugged')
 
     " Git integration
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-markdown'
 
     " FZF
     Plug 'junegunn/fzf'
@@ -118,7 +125,7 @@ filetype plugin indent on
 
     " --------------------------------
     " fzf
-    " --------------------------------
+    " --------------------------------jjjjkkkklllllllllljjjjjjjkkkkk
 	:noremap <C-p> :Files<CR>
 	:noremap <leader>g :GFiles<CR>
 	:noremap <leader>b :Buffers<CR>
@@ -144,7 +151,8 @@ filetype plugin indent on
     " --------------------------------
     " UltiSnips
     " --------------------------------
-	let g:UltiSnipsSnippetDirectories = ['ultisnips']
+        let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = '~/.vim/ultisnips'
+	let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 	let g:UltiSnipsExpandTrigger = '<tab>'
 	let g:UltiSnipsListSnippets = '<s-tab>'
 	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
@@ -188,7 +196,8 @@ filetype plugin indent on
     " ALE
     " --------------------------------
     :noremap <leader>A :ALEToggle<CR>
-    let g:ale_linters = {'python': ['flake8']}
+    let g:ale_linters = {'python': ['ruff']}
+    let g:ale_fixers = {'python': ['ruff']}
     let g:ale_sign_column_always = 1
     let g:ale_sign_highlight_linenrs = 1
     let g:ale_virtualtext_cursor = 'disabled'
@@ -199,6 +208,13 @@ filetype plugin indent on
     :hi ALEErrorLine ctermbg=13
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+    " --------------------------------
+    " Markdown
+    " --------------------------------
+    let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+    let g:markdown_syntax_conceal = 0
+    let g:markdown_minlines = 1000
 
 
 " ======================================================================
@@ -215,21 +231,19 @@ if &diff
 endif
 
 :function! MyPostPatch()
-:  hi CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=NONE
-:  hi Search term=reverse ctermfg=black ctermbg=yellow
-:  hi IncSearch ctermfg=yellow ctermbg=black
+:  hi CursorLine cterm=NONE ctermbg=darkgrey ctermfg=NONE
+:  hi Search term=reverse cterm=reverse ctermfg=yellow ctermbg=black gui=reverse guifg=yellow guibg=black
+:  hi IncSearch term=reverse cterm=reverse ctermfg=yellow ctermbg=black gui=reverse guifg=yellow guibg=black
+:  hi CurSearch term=reverse cterm=reverse ctermfg=yellow ctermbg=black gui=reverse guifg=yellow guibg=black
 :  hi Comment term=NONE ctermfg=Grey ctermbg=NONE
 :  hi Folded term=NONE ctermfg=red ctermbg=NONE
 :  hi ColorColumn ctermbg=234
-:  hi LineNr ctermfg=7 ctermbg=0 guifg=LightGrey guibg=DarkGrey
+:  hi LineNr ctermfg=7 ctermbg=0 guifg=DarkGrey guibg=black
 "  ALE left column
 :  hi clear SignColumn
 :  set iskeyword=@,48-57,_
 :endfunction
 
-" For whatever reason, normal redraw doesn't work when a log tail in the
-" backdrop vomits into the editor screen.
-"
 :noremap <leader>p :set invpaste<CR>
 set nopaste
 :noremap <leader>h :set invhlsearch<CR>
@@ -300,9 +314,11 @@ set t_Co=256
 if !has('nvim')
     set esckeys
 endif
-" set autochdir
+set noautochdir
 
-set sessionoptions=buffers
+" Dunnu why i overrode that, defaults are much more useful:
+" sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+" set sessionoptions=buffers
 
 " Prettier wrapping of long lines
 set nowrap
@@ -334,8 +350,6 @@ augroup filetypedetect
     au BufNewFile,BufRead *.kata	set wrap wrapmargin=7
     au BufNewFile,BufRead *.kata	set filetype=txt
     au BufNewFile,BufRead *.sls		set filetype=yaml
-    au BufNewFile,BufRead *.markdown 	set filetype=mkd
-    au BufNewFile,BufRead *.md       	set filetype=mkd
 
     au FileType python			set expandtab smarttab autoindent smartindent number cursorline
     au FileType yaml			set expandtab smarttab autoindent smartindent number cursorline
