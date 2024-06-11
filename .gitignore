@@ -1,2 +1,4 @@
 vim/.vim/plugged/
 vim/.vim/undo-dir/
++alacritty/.config/alacritty/themes/xterm.toml
+alacritty/.config/alacritty/themes/*
