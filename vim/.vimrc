@@ -231,16 +231,18 @@ if &diff
 endif
 
 :function! MyPostPatch()
-:  hi CursorLine cterm=NONE ctermbg=darkgrey ctermfg=NONE
-:  hi Search term=reverse cterm=reverse ctermfg=yellow ctermbg=black gui=reverse guifg=yellow guibg=black
-:  hi IncSearch term=reverse cterm=reverse ctermfg=yellow ctermbg=black gui=reverse guifg=yellow guibg=black
-:  hi CurSearch term=reverse cterm=reverse ctermfg=yellow ctermbg=black gui=reverse guifg=yellow guibg=black
-:  hi Comment term=NONE ctermfg=Grey ctermbg=NONE
-:  hi Folded term=NONE ctermfg=red ctermbg=NONE
-:  hi ColorColumn ctermbg=234
-:  hi LineNr ctermfg=7 ctermbg=0 guifg=DarkGrey guibg=black
-"  ALE left column
-:  hi clear SignColumn
+:  hi  Cursor       cterm=NONE       gui=reverse    ctermfg=black  guifg=black ctermbg=white     guibg=white
+:  hi  TermCursor   cterm=NONE       gui=reverse    ctermfg=black  guifg=black ctermbg=white     guibg=white
+:  hi  CursorLine   cterm=NONE       gui=NONE       ctermfg=NONE   guifg=NONE  ctermbg=darkgrey  guibg=#202020
+:  hi  Search       cterm=reverse    gui=reverse    ctermfg=cyan   guifg=cyan  ctermbg=black     guibg=black
+:  hi  IncSearch    cterm=reverse    gui=reverse    ctermfg=cyan   guifg=cyan  ctermbg=black     guibg=black
+:  hi  CurSearch    cterm=NONE       gui=NONE       ctermfg=cyan   guifg=cyan  ctermbg=black     guibg=black
+:  hi  Comment      ctermfg=Grey     ctermbg=NONE   guifg=Grey     guibg=NONE                      
+:  hi  Folded       ctermfg=red      ctermbg=NONE   guifg=red      guibg=NONE                      
+:  hi  ColorColumn  ctermbg=darkgrey  guibg=#101010                                                 
+:  hi  LineNr       ctermfg=7        ctermbg=0      guifg=DarkGrey guibg=black                     
+" ALE left column
+":  hi clear             SignColumn
 :  set iskeyword=@,48-57,_
 :endfunction
 
