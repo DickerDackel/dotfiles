@@ -1,0 +1,421 @@
+snippet github
+    '$1 @ git+https://github.com/dickerdackel/$1',
+endsnippet
+
+snippet """m "Module docstring" m
+"""Example Google style docstrings.
+
+This module demonstrates documentation as specified by the `Google Python
+Style Guide`_. Docstrings may extend over multiple lines. Sections are created
+with a section header and a colon followed by a block of indented text.
+
+Example:
+    Examples can be given using either the ``Example`` or ``Examples``
+    sections. Sections support any reStructuredText formatting, including
+    literal blocks::
+
+        $ python example_google.py
+
+Section breaks are created by resuming unindented text. Section breaks
+are also implicitly created anytime a new section starts.
+
+Attributes:
+    module_level_variable1 (int): Module level variables may be documented in
+        either the ``Attributes`` section of the module docstring, or in an
+        inline docstring immediately following the variable.
+
+        Either form is acceptable, but the two should not be mixed. Choose
+        one convention to document module level variables and be consistent
+        with it.
+
+Todo:
+    * For module TODOs
+    * You have to also use ``sphinx.ext.todo`` extension
+
+.. _Google Python Style Guide:
+   http://google.github.io/styleguide/pyguide.html
+
+"""
+endsnippet
+
+snippet """f "Function docstring, short" m
+"""Example function or class method with PEP 484 type annotations.
+
+The return type must be duplicated in the docstring to comply
+with the NumPy docstring style.
+
+Note: Don't include the `self` parameter.
+
+Parameters
+----------
+param1
+    The first parameter.
+param2
+    The second parameter.
+
+Returns
+-------
+bool
+    True if successful, False otherwise.
+
+Raises
+------
+Exception
+    True if successful, False otherwise.
+
+"""
+endsnippet
+
+snippet """fst "Function docstring, with type information" m
+"""Example function with types documented in the docstring.
+
+:pep:`484` type annotations are supported. If attribute, parameter, and
+return types are annotated according to `PEP 484`_, they do not need to be
+included in the docstring:
+
+Parameters
+----------
+param1 : int
+    The first parameter.
+param2 : str
+    The second parameter.
+
+Returns
+-------
+bool
+    True if successful, False otherwise.
+"""
+endsnippet
+
+snippet """fl "Function docstring, long" m
+"""This is an example of a module level function.
+
+Function parameters should be documented in the ``Parameters`` section.
+The name of each parameter is required. The type and description of each
+parameter is optional, but should be included if not obvious.
+
+If ``*args`` or ``**kwargs`` are accepted,
+they should be listed as ``*args`` and ``**kwargs``.
+
+The format for a parameter is::
+
+    name : type
+	description
+
+	The description may span multiple lines. Following lines
+	should be indented to match the first line of the description.
+	The ": type" is optional.
+
+	Multiple paragraphs are supported in parameter
+	descriptions.
+
+Parameters
+----------
+param1 : int
+    The first parameter.
+param2 : :obj:`str`, optional
+    The second parameter.
+*args
+    Variable length argument list.
+**kwargs
+    Arbitrary keyword arguments.
+
+Returns
+-------
+bool
+    True if successful, False otherwise.
+
+    The return type is not optional. The ``Returns`` section may span
+    multiple lines and paragraphs. Following lines should be indented to
+    match the first line of the description.
+
+    The ``Returns`` section supports any reStructuredText formatting,
+    including literal blocks::
+
+	{
+	    'param1': param1,
+	    'param2': param2
+	}
+
+Raises
+------
+AttributeError
+    The ``Raises`` section is a list of all exceptions
+    that are relevant to the interface.
+ValueError
+    If `param2` is equal to `param1`.
+
+"""
+endsnippet
+
+snippet """g "Generator docstring" m
+"""Generators have a ``Yields`` section instead of a ``Returns`` section.
+
+Parameters
+----------
+n : int
+    The upper limit of the range to generate, from 0 to `n` - 1.
+
+Yields
+------
+int
+    The next number in the range of 0 to `n` - 1.
+
+Examples
+--------
+Examples should be written in doctest format, and should illustrate how
+to use the function.
+
+>>> print([i for i in example_generator(4)])
+[0, 1, 2, 3]
+
+"""
+endsnippet
+
+snippet """E "Exception docstring" m
+"""Exceptions are documented in the same way as classes.
+
+The __init__ method may be documented in either the class level
+docstring, or as a docstring on the __init__ method itself.
+
+Either form is acceptable, but the two should not be mixed. Choose one
+convention to document the __init__ method and be consistent with it.
+
+Note
+----
+Do not include the `self` parameter in the ``Parameters`` section.
+
+Parameters
+----------
+msg : str
+    Human readable string describing the exception.
+code : :obj:`int`, optional
+    Numeric error code.
+
+Attributes
+----------
+msg : str
+    Human readable string describing the exception.
+code : int
+    Numeric error code.
+
+"""
+endsnippet
+
+snippet """c "Class __init__ docstring" m
+"""The summary line for a class docstring should fit on one line.
+
+The __init__ method may be documented in either the class level
+docstring, or as a docstring on the __init__ method itself.
+
+Either form is acceptable, but the two should not be mixed. Choose one
+convention to document the __init__ method and be consistent with it.
+
+Properties created with the ``@property`` decorator should be documented
+in the property's getter method.
+
+Note
+----
+Do not include the `self` parameter in the ``Parameters`` section.
+
+Parameters
+----------
+param1 : str
+    Description of `param1`.
+param2 : list(str)
+    Description of `param2`. Multiple
+    lines are supported.
+param3 : :obj:`int`, optional
+    Description of `param3`.
+
+Attributes
+----------
+attr1 : str
+    Description of `attr1`.
+attr2 : :obj:`int`, optional
+    Description of `attr2`.
+
+"""
+endsnippet
+
+snippet pgmin "pygame minimal" mt
+import pygame
+
+TITLE = 'pygame minimal template'
+SCREEN = pygame.Rect(0, 0, 1024, 768)
+FPS = 60
+DT_MAX = 3 / FPS
+
+pygame.init()
+pygame.display.set_caption(TITLE)
+screen = pygame.display.set_mode(SCREEN.size)
+clock = pygame.time.Clock()
+
+running = True
+while running:
+    dt = min(clock.tick(FPS) / 1000.0, DT_MAX)
+
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            running = False
+        elif e.type == pygame.KEYDOWN:
+            if e.key == pygame.K_ESCAPE:
+                running = False
+
+    screen.fill('black')
+
+    ...
+
+    pygame.display.flip()
+    pygame.display.set_caption(f'{TITLE} - time={pygame.time.get_ticks()/1000:.2f}  fps={clock.get_fps():.2f}')
+
+endsnippet
+
+snippet pgapp "pygame app"
+import sys
+import argparse
+import pygame
+
+from enum import Enum
+from pygame import Vector2
+from types import SimpleNamespace
+
+from pygamehelpers import App, GameState
+
+TITLE = 'Minimal App Framework'
+SCREEN = pygame.Rect(0, 0, 1024, 768)
+FPS = 60
+DT_MAX = 1 / FPS * 3
+
+
+class States(Enum):
+    GAME = 1
+
+
+cmdline = argparse.ArgumentParser(description=TITLE)
+cmdline.add_argument('-d', '--debug', action='store_true', help='Activate debugging')
+opts = cmdline.parse_args(sys.argv[1:])
+
+pygame.init()
+pygame.display.set_caption(TITLE)
+screen = pygame.display.set_mode(SCREEN.size)
+
+persist = SimpleNamespace(
+    screen=screen,
+    rect=screen.get_rect(),
+    debug=opts.debug,
+    font=pygame.Font(None),
+)
+
+
+class Game(GameState):
+    def dispatch_event(self, e):
+        super().dispatch_event(e)
+        ...
+
+    def update(self, dt):
+        ...
+
+    def draw(self, screen):
+        pygame.display.set_caption(f'{TITLE} - time={pygame.time.get_ticks()/1000:.2f}  fps={self.app.clock.get_fps():.2f}')
+        ...
+
+
+def main():
+    app = App(screen, FPS)
+    states = {
+        States.GAME: Game(app, persist),
+    }
+
+    app.run(States.GAME, states)
+
+
+if __name__ == '__main__':
+    main()
+endsnippet
+
+snippet pggs "A pygame GameState template" m
+import pygame
+
+from pygame import Vector2
+from pygamehelpers.framework import GameState
+
+
+class MyGamestate(GameState):
+    def __init__(self, app, persist, parent=None):
+        super().__init__(app, persist, parent=parent)
+
+        ...
+
+    def reset(self, persist=None):
+        """Reset settings when re-running."""
+        super().reset(persist=persist)
+        ...
+
+    def dispatch_event(self, e):
+        """Handle user events"""
+        pass
+
+    def update(self, dt):
+        """Update frame by delta time dt."""
+        ...
+
+    def draw(self, screen):
+        """Draw current frame to surface screen."""
+        ...
+endsnippet
+
+snippet pgapp "A pygame framework main app template" m
+import sys
+import argparse
+import pygame
+import pygamehelpers.resources
+
+from importlib.resources import files
+from types import SimpleNamespace
+
+from pygamehelpers.framework import App
+
+from .constants import FPS, SCREEN, TITLE, ASSETS, States
+
+# Game states ----------------------------------------------------------
+from .state1 import State1
+from .state2 import State2
+from .state3 import State3
+
+cmdline = argparse.ArgumentParser(description=TITLE)
+cmdline.add_argument('-d', '--debug', action='store_true', help='Activate debugging')
+opts = cmdline.parse_args(sys.argv[1:])
+
+persist = SimpleNamespace(
+    debug=opts.debug,
+    font=pygame.Font(None),
+)
+
+
+def main():
+    app = App(TITLE, SCREEN, FPS)
+    states = {
+        States.TITLE: Title(app, persist),
+        States.GAME: Game(app, persist),
+        States.GAMEOVER: Gameover(app, persist)
+    }
+    app.run(States.TITLE, states)
+
+
+if __name__ == '__main__':
+    main()
+endsnippet
+
+snippet pgconst "pygame App-Framework constants file" m
+import pygame
+
+TITLE = FIXME
+SCREEN = pygame.rect.Rect(0, 0, 1024, 768)
+FPS = 60
+endsnippet
+
+snippet ecs "tinyecs imports" m
+import tinyecs as ecs
+import tinyecs.components as ecsc
+endsnippet
