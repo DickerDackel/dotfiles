@@ -66,8 +66,9 @@ call plug#begin('~/.vim/plugged')
     "-------------------------------------------------------------------
     " Experimental
     "-------------------------------------------------------------------
-    " Debugging
-    " Plug 'puremourning/vimspector'
+    if has('nvim')
+	Plug 'nvim-treesitter/nvim-treesitter'
+    endif
 
     " Git integration
     Plug 'tpope/vim-fugitive'
