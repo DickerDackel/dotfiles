@@ -126,10 +126,11 @@ filetype plugin indent on
 
     " --------------------------------
     " fzf
-    " --------------------------------jjjjkkkklllllllllljjjjjjjkkkkk
+    " --------------------------------
 	:noremap <C-p> :Files<CR>
 	:noremap <leader>g :GFiles<CR>
 	:noremap <leader>b :Buffers<CR>
+	:let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 
     " --------------------------------
     " Tagbar
@@ -152,8 +153,8 @@ filetype plugin indent on
     " --------------------------------
     " UltiSnips
     " --------------------------------
-        let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = '~/.vim/ultisnips'
-	let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+        " let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = '~/.vim/ultisnips'
+	let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'ultisnips']
 	let g:UltiSnipsExpandTrigger = '<tab>'
 	let g:UltiSnipsListSnippets = '<s-tab>'
 	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
