@@ -5,7 +5,7 @@ import = [
 [window]
 # Doesn't work with fullscreen, not an alicritty bug, but an
 # freedesktop.org spec
-opacity=0.5
+opacity=0.80
 
 [scrolling]
 history = 32768
