@@ -1,3 +1,11 @@
+snippet lerps
+# See Freya Holmer "The simple yet powerful math we don't talk about"
+# https://www.youtube.com/watch?v=R6UB7mVO3fY
+def lerp(a, b, t):		return (1 - t) * a + b * t
+def inv_lerp(a, b, v):		return (v - a) / (b - a)
+def remap(a0, a1, b0, b1, v):	return lerp(b0, b1, inv_lerp(a0, a1, v))
+endsnippet
+
 snippet github
     '$1 @ git+https://github.com/dickerdackel/$1',
 endsnippet
@@ -134,6 +142,16 @@ bool
 
 	{
 	    'param1': param1,
+
+    The return type is not optional. The ``Returns`` section may span
+    multiple lines and paragraphs. Following lines should be indented to
+    match the first line of the description.
+
+    The ``Returns`` section supports any reStructuredText formatting,
+    including literal blocks::
+
+	{
+	    'param1': param1,
 	    'param2': param2
 	}
 
@@ -239,6 +257,8 @@ attr2 : :obj:`int`, optional
 endsnippet
 
 snippet pgmin "pygame minimal" mt
+#!/bin/env python3
+
 import pygame
 
 TITLE = 'pygame minimal template'
@@ -283,16 +303,6 @@ from types import SimpleNamespace
 from pygamehelpers import App, GameState
 
 TITLE = 'Minimal App Framework'
-SCREEN = pygame.Rect(0, 0, 1024, 768)
-FPS = 60
-DT_MAX = 1 / FPS * 3
-
-
-class States(Enum):
-    GAME = 1
-
-
-cmdline = argparse.ArgumentParser(description=TITLE)
 cmdline.add_argument('-d', '--debug', action='store_true', help='Activate debugging')
 opts = cmdline.parse_args(sys.argv[1:])
 
