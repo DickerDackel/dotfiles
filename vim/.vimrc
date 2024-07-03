@@ -130,7 +130,9 @@ filetype plugin indent on
 	:noremap <C-p> :Files<CR>
 	:noremap <leader>g :GFiles<CR>
 	:noremap <leader>b :Buffers<CR>
+	if has('win32')
 	:let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+	endif
 
     " --------------------------------
     " Tagbar
