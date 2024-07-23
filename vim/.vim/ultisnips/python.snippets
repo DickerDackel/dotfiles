@@ -1,9 +1,12 @@
-snippet lerps
-# See Freya Holmer "The simple yet powerful math we don't talk about"
-# https://www.youtube.com/watch?v=R6UB7mVO3fY
-def lerp(a, b, t):		return (1 - t) * a + b * t
-def inv_lerp(a, b, v):		return (v - a) / (b - a)
-def remap(a0, a1, b0, b1, v):	return lerp(b0, b1, inv_lerp(a0, a1, v))
+snippet ilerp "Inline lerp lambdas" m
+# See Freya Holmer "The simple yet powerful math we don't talk about":
+#     https://www.youtube.com/watch?v=R6UB7mVO3fY
+# This is the "official" lerp, but it's about 10% slower than the one with only
+# a single multiplication below.
+# _lerp     = lambda a, b, t: (1 - t) * a + b * t
+_lerp     = lambda a, b, t: t * (b - a) + a
+_inv_lerp = lambda a, b, v: (v - a) / (b - a)
+_remap    = lambda a0, a1, b0, b1, v: _lerp(b0, b1, _inv_lerp(a0, a1, v))
 endsnippet
 
 snippet github
@@ -74,6 +77,12 @@ Exception
 """
 endsnippet
 
+snippet """t "Terse function docstring" m
+"""Terse description of function
+"""
+
+endsnippet
+
 snippet """fst "Function docstring, with type information" m
 """Example function with types documented in the docstring.
 
@@ -134,6 +143,14 @@ bool
     True if successful, False otherwise.
 
     The return type is not optional. The ``Returns`` section may span
+    multiple lines and paragraphs. Following lines should be indented to
+    match the first line of the description.
+
+    The ``Returns`` section supports any reStructuredText formatting,
+    including literal blocks::
+
+	{
+	    'param1': param1,
     multiple lines and paragraphs. Following lines should be indented to
     match the first line of the description.
 
@@ -293,16 +310,6 @@ endsnippet
 
 snippet pgapp "pygame app"
 import sys
-import argparse
-import pygame
-
-from enum import Enum
-from pygame import Vector2
-from types import SimpleNamespace
-
-from pygamehelpers import App, GameState
-
-TITLE = 'Minimal App Framework'
 cmdline.add_argument('-d', '--debug', action='store_true', help='Activate debugging')
 opts = cmdline.parse_args(sys.argv[1:])
 
