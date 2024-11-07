@@ -81,6 +81,8 @@ call plug#begin('~/.vim/plugged')
     " Alternative to nerdcommenter
     Plug 'tpope/vim-commentary'
 
+    Plug 'folke/which-key.nvim'
+
 call plug#end()
 
 filetype plugin indent on
@@ -131,7 +133,7 @@ filetype plugin indent on
 	:noremap <leader>g :GFiles<CR>
 	:noremap <leader>b :Buffers<CR>
 	if has('win32')
-	:let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+	:let $FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow'
 	endif
 
     " --------------------------------
@@ -371,3 +373,4 @@ runtime macros/matchit.vim
 :cabbrev help vert bo help
 :iabbrev ml@ michael.lamertz@gmail.com
 :iabbrev ml! Michael Lamertz
+let @d = "ooprint(f'{=}')hhh\"\"PA"
