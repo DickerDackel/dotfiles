@@ -11,13 +11,16 @@
     helper = store --file ~/.git-credentials
 
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
 
 [merge]
     tool = vimmdiff
 
 [difftool]
-    prompt = false
+    prompt = true
+
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [core]
     editor = vim
