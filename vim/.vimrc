@@ -6,7 +6,7 @@ if has('win32')
     " neovim needs pynvim for the LSP.  If you don't want to install it into
     " every active venv, vim must be forced to use the system wide python
     " instead of the venv.  Shitty, must be changed for every python update.
-    let g:python3_host_prog = 'c:/python312/python.exe'
+    " let g:python3_host_prog = 'c:/python312/python.exe'
     set rtp-=~/.vimfiles
     set rtp+=~/.vim
 endif
@@ -116,10 +116,9 @@ filetype plugin indent on
     " --------------------------------
     " jedi-vim
     " --------------------------------
-	let g:jedi#popup_on_dot = 0
-	let g:jedi#show_call_signatures = 2
-	let g:jedi#use_splits_not_buffers = "bottom"
-	let g:jedi#popup_select_first = 0
+        let g:jedi#use_tabs_not_buffers = 1
+	let g:jedi#popup_select_first = 1
+	set completeopt=menuone,longest,popup
 
     " --------------------------------
     " goyo
