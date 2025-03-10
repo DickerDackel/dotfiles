@@ -10,7 +10,7 @@ venv () {
 
 mkv () {
     if [ $# == 1 ]; then
-	python3 -m venv "$1"
+	python3 -m venv "$1/.venv" --prompt "$1"
 	cd $1
 	venv
     else
