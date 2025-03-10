@@ -1,3 +1,9 @@
+# Overwrite vim-snippets '#!' snippet
+snippet #! "#!/usr/bin/env python3" b
+#!/usr/bin/env python3
+$0
+endsnippet
+
 snippet ilerp "Inline lerp lambdas" m
 # See Freya Holmer "The simple yet powerful math we don't talk about":
 #     https://www.youtube.com/watch?v=R6UB7mVO3fY
@@ -332,4 +338,20 @@ class TGroup(pygame.sprite.Group):
     def draw(self, unused):
         for s in self.sprites():
             s.texture.draw(dstrect=s.rect)
+endsnippet
+
+snippet bench "bench!"
+from statistics import mean, median, stdev
+from timeit import timeit
+
+def bench(*fns, runs=5, number=1_000_000):
+    for fn in fns:
+        print(fn)
+        print('-' * 72)
+        timings = []
+        for i in range(runs):
+	    timings.append(timeit(fn, number=number))
+	    print(f'{i}: {timings[-1]}')
+
+        print(f'{mean(timings)=:.5f}  {median(timings)=:.5f}  {stdev(timings)=:.5f}\n')
 endsnippet
