@@ -1,0 +1,8 @@
+#!/bin/env python3
+
+import sys
+
+path = sys.argv[1].split(':')
+seen = set()
+res = [f for f in path if f not in seen]
+print(':'.join(res))

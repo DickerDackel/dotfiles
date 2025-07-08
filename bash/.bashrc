@@ -12,23 +12,21 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=1073741824
 export HISTFILESIZE=1073741824
 export HISTTIMEFORMAT="%F %T "
-export LESS=-isSXR
+export LESS=-isSXRF
 export PAGER=less
-export EDITOR=vim
 
 for dir in \
-    /sbin \
-    /usr/sbin \
     ~/.local/bin \
-    ~/bin \
+    /opt/*/bin \
     /usr/local/bin \
-    ~/opt/bin \
-    /opt/*/bin
+    /sbin \
+    /usr/sbin
 do
     [ -d $dir ] && PATH=$dir:$PATH
 done
-PATH=~/opt/bin:$PATH
+command -v path-cleanup >/dev/null 2>&1 && PATH=$( path-cleanup $PATH )
 export PATH
+
 
 if [ -f ~/.dircolors ]; then
     eval `dircolors -b ~/.dircolors`
@@ -50,6 +48,15 @@ alias more=$PAGER
 alias less=$PAGER
 alias hd='hexdump -v -e "\"%06.6_ao  \"   16/1  \"%02x \" \"  \"" -e "16/1 \"%_p\" \"\n\""'
 
+if command -v nvim >/dev/null 2>&1; then
+    export EDITOR=nvim
+    alias vi=nvim
+    alias vimdiff='nvim -d'
+else
+    export EDITOR=vim
+    alias vi=vim
+fi
+
 # for i in /etc/profile.d/*.sh; do
 #     if [ -r "$i" ]; then
 # 	if [ "${-#*i}" != "$-" ]; then
@@ -64,5 +71,7 @@ alias hd='hexdump -v -e "\"%06.6_ao  \"   16/1  \"%02x \" \"  \"" -e "16/1 \"%_p
 for f in ~/.bash/*; do
     . $f
 done
+
+[ -f /usr/share/fzf/shell/key-bindings.bash ] && . /usr/share/fzf/shell/key-bindings.bash
 
 [ -f ~/.settings.$HOSTNAME ] && . ~/.settings.$HOSTNAME
