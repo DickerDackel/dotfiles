@@ -235,10 +235,11 @@ if &diff
     colorscheme vividchalk
 endif
 
+:set notermguicolors
 :function! MyPostPatch()
 :  hi  Cursor       cterm=NONE       gui=reverse    ctermfg=black  guifg=black ctermbg=white     guibg=white
 :  hi  TermCursor   cterm=NONE       gui=reverse    ctermfg=black  guifg=black ctermbg=white     guibg=white
-:  hi  CursorLine   cterm=NONE       gui=NONE       ctermfg=NONE   guifg=NONE  ctermbg=darkgrey  guibg=#202020
+:  hi  CursorLine   cterm=NONE       gui=NONE       ctermfg=NONE   guifg=NONE  ctermbg=235       guibg=#202020
 :  hi  Search       cterm=reverse    gui=reverse    ctermfg=cyan   guifg=cyan  ctermbg=black     guibg=black
 :  hi  IncSearch    cterm=reverse    gui=reverse    ctermfg=cyan   guifg=cyan  ctermbg=black     guibg=black
 :  hi  CurSearch    cterm=NONE       gui=NONE       ctermfg=cyan   guifg=cyan  ctermbg=black     guibg=black
@@ -246,6 +247,9 @@ endif
 :  hi  Folded       ctermfg=red      ctermbg=NONE   guifg=red      guibg=NONE                      
 :  hi  ColorColumn  ctermbg=darkgrey  guibg=#101010                                                 
 :  hi  LineNr       ctermfg=7        ctermbg=0      guifg=DarkGrey guibg=black                     
+:  hi  SpellCap     ctermbg=81 ctermfg=black
+:  hi  MatchParen   cterm=NONE ctermfg=yellow ctermbg=black
+
 " ALE left column
 ":  hi clear             SignColumn
 :  set iskeyword=@,48-57,_
