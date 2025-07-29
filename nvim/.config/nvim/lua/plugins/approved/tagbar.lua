@@ -1,0 +1,2 @@
+-- ctags
+return { 'majutsushi/tagbar' }
