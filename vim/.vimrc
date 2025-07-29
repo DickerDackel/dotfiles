@@ -163,6 +163,8 @@ filetype plugin indent on
 	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 	let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 	let g:UltiSnipsEditSplit="context"
+        " let g:ultisnips_python_quoting_style = 'single'
+        " let g:ultisnips_python_triple_quoting_style = 'double'
 
     " --------------------------------
     " from the limelight homepage
