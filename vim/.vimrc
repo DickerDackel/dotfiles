@@ -247,10 +247,12 @@ endif
 :  hi  CurSearch    cterm=NONE       gui=NONE       ctermfg=cyan   guifg=cyan  ctermbg=black     guibg=black
 :  hi  Comment      ctermfg=Grey     ctermbg=NONE   guifg=Grey     guibg=NONE                      
 :  hi  Folded       ctermfg=red      ctermbg=NONE   guifg=red      guibg=NONE                      
-:  hi  ColorColumn  ctermbg=darkgrey  guibg=#101010                                                 
+:  hi  ColorColumn  ctermbg=darkgrey guibg=#101010                                                 
 :  hi  LineNr       ctermfg=7        ctermbg=0      guifg=DarkGrey guibg=black                     
-:  hi  SpellCap     ctermbg=81 ctermfg=black
-:  hi  MatchParen   cterm=NONE ctermfg=yellow ctermbg=black
+:  hi  SpellCap     ctermbg=81       ctermfg=black
+:  hi  MatchParen   cterm=NONE       ctermfg=yellow ctermbg=black
+:  hi  DiffDelete   ctermfg=0        ctermbg=241
+:  hi  DiffAdd      ctermfg=blue     ctermbg=white
 
 " ALE left column
 ":  hi clear             SignColumn
