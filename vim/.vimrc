@@ -257,6 +257,7 @@ endif
 " ALE left column
 ":  hi clear             SignColumn
 :  set iskeyword=@,48-57,_
+":  set iskeyword=@,48-57,
 :endfunction
 
 :noremap <leader>p :set invpaste<CR>
@@ -272,7 +273,7 @@ if has('win32')
     :noremap <leader>v :sp ~/_vimrc<CR><C-W>_
 else
     :noremap <leader>v :sp ~/.vimrc<CR><C-W>_
-endif
+C'endif
 :noremap <leader>V :source %<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 :set splitright
