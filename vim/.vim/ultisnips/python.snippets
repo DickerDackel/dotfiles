@@ -350,8 +350,8 @@ def bench(*fns, runs=5, number=1_000_000):
         print('-' * 72)
         timings = []
         for i in range(runs):
-	    timings.append(timeit(fn, number=number))
-	    print(f'{i}: {timings[-1]}')
+            timings.append(timeit(fn, number=number))
+            print(f'{i}: {timings[-1]}')
 
         print(f'{mean(timings)=:.5f}  {median(timings)=:.5f}  {stdev(timings)=:.5f}\n')
 endsnippet
