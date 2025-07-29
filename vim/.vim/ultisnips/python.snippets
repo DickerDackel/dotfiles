@@ -275,9 +275,9 @@ FPS = 60
 DT_MAX = 3 / FPS
 
 pygame.init()
+clock = pygame.time.Clock()
 pygame.display.set_caption(TITLE)
 screen = pygame.display.set_mode(SCREEN.size)
-clock = pygame.time.Clock()
 
 running = True
 while running:
@@ -311,9 +311,9 @@ SCREEN = pygame.Rect(0, 0, 1024, 768)
 FPS = 60
 DT_MAX = 3 / FPS
 
+clock = pygame.time.Clock()
 window = pygame.Window(title=TITLE, size=SCREEN.size)
 renderer = sdl2.Renderer(window)
-clock = pygame.time.Clock()
 
 running = True
 while running:
