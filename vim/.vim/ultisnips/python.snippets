@@ -355,3 +355,18 @@ def bench(*fns, runs=5, number=1_000_000):
 
         print(f'{mean(timings)=:.5f}  {median(timings)=:.5f}  {stdev(timings)=:.5f}\n')
 endsnippet
+
+snippet descriptor "descriptor template" mt
+class Descriptor:
+    def __set_name__(self, obj, name):
+        self.attrib = f'__lerpthing_{name}'
+
+    def __set__(self, obj, val):
+        obj.__setattr__(self.attrib, val)
+
+    def __get__(self, obj, parent):
+        if obj is None: return self
+
+        val = obj.__getattribute__(self.attrib)
+        return val() if isinstance(val, LerpThing) else val
+endsnippet
