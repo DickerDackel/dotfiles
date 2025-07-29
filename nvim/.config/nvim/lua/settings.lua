@@ -26,7 +26,8 @@ vim.o.signcolumn = 'yes'
 vim.o.scrolloff = 3
 vim.o.foldnestmax = 2
 vim.opt.formatoptions:remove 't'
-vim.opt.iskeyword:remove '_'
+-- Good for moving around, bad for e.g. changing with ciw
+-- vim.opt.iskeyword:remove '_'
 vim.o.linebreak = true
 vim.o.wrap = false
 vim.o.shiftwidth = 4

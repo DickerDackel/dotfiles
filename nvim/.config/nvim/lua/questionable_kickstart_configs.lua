@@ -14,7 +14,7 @@ end)
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
-vim.o.list = true
+-- vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 --
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
