@@ -34,3 +34,7 @@ require("lazy").setup({
 
 	install = { colorscheme = { "vividchalk", "habamax" } },
 })
+
+require("lualine").setup({
+	options = { theme = "ayu_dark" },
+})
