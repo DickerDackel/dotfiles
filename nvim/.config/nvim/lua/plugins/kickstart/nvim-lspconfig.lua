@@ -196,7 +196,9 @@ return {
     local servers = {
       clangd = {},
       -- gopls = {},
-      -- ML: basedpyright = {},
+      -- ML basedpyright = {}
+      -- ML jedi_language_server = {},
+      ty = {},
       ruff = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
