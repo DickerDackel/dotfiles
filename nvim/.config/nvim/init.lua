@@ -29,6 +29,8 @@ require("lazy").setup({
     require("plugins.testing.neodev"),
     require("plugins.testing.harpoon"),
     require("plugins.testing.lualine"),
+    require("plugins.testing.tree"),
+    require("plugins.testing.trouble"),
 
     -- require("plugins.jail.autoformat"),
     -- require("plugins.kickstart.git-signs"),
