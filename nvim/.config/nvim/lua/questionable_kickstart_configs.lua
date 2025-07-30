@@ -23,7 +23,8 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- ML Is this what messes with the popup windows?
+-- ML vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
