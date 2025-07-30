@@ -45,6 +45,11 @@ vim.cmd ':iabbrev ml! Michael Lamertz'
 -- add matchit native plugin (:help matchit)
 vim.cmd 'runtime macros/matchit.vim'
 
+-- Show trailing whitespace as errors
+vim.cmd 'match errorMsg /\\s\\+$/'
+
+
+
 -- Why?!?
 -- set notermguicolors
 
