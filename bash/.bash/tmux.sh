@@ -4,6 +4,12 @@ else
     alias tmux='tmux -2'
 fi
 
+tmnew () {
+    name=$( mktemp -u -p ./ -t tmux-${USER}-XXX )
+    local=${name##./}
+    tmux -L ${name}
+}
+
 tmhs () {
     for h in "$@"; do
 	tmux split-window "ssh $h"
