@@ -1,0 +1,372 @@
+# Overwrite vim-snippets '#!' snippet
+snippet #! "#!/usr/bin/env python3" b
+#!/usr/bin/env python3
+$0
+endsnippet
+
+snippet ilerp "Inline lerp lambdas" m
+# See Freya Holmer "The simple yet powerful math we don't talk about":
+#     https://www.youtube.com/watch?v=R6UB7mVO3fY
+# This is the "official" lerp, but it's about 10% slower than the one with only
+# a single multiplication below.
+# _lerp     = lambda a, b, t: (1 - t) * a + b * t
+_lerp     = lambda a, b, t: t * (b - a) + a
+_inv_lerp = lambda a, b, v: (v - a) / (b - a)
+_remap    = lambda a0, a1, b0, b1, v: _lerp(b0, b1, _inv_lerp(a0, a1, v))
+endsnippet
+
+snippet github
+    '$1 @ git+https://github.com/dickerdackel/$1',
+endsnippet
+
+snippet """m "Module docstring" m
+"""I hate this line being here
+
+... rest of the docstring
+
+Example:
+    ...
+
+Attributes:
+    attrib1
+    module_level_variable1 (int): Module level variables may be documented in
+        either the ``Attributes`` section of the module docstring, or in an
+        inline docstring immediately following the variable.
+
+        Either form is acceptable, but the two should not be mixed. Choose
+        one convention to document module level variables and be consistent
+        with it.
+
+Todo:
+    * For module TODOs
+    * You have to also use ``sphinx.ext.todo`` extension
+
+.. _Google Python Style Guide:
+   http://google.github.io/styleguide/pyguide.html
+
+"""
+endsnippet
+
+snippet """f "Function docstring, short" m
+"""Example function or class method with PEP 484 type annotations.
+
+The return type must be duplicated in the docstring to comply
+with the NumPy docstring style.
+
+Note: Don't include the `self` parameter.
+
+Parameters
+----------
+param1
+    The first parameter.
+param2
+    The second parameter.
+
+Returns
+-------
+bool
+    True if successful, False otherwise.
+
+Raises
+------
+Exception
+    True if successful, False otherwise.
+
+"""
+endsnippet
+
+snippet """t "Terse function docstring" m
+"""Terse description of function
+"""
+
+endsnippet
+
+snippet """fst "Function docstring, with type information" m
+"""Example function with types documented in the docstring.
+
+:pep:`484` type annotations are supported. If attribute, parameter, and
+return types are annotated according to `PEP 484`_, they do not need to be
+included in the docstring:
+
+Parameters
+----------
+param1 : int
+    The first parameter.
+param2 : str
+    The second parameter.
+
+Returns
+-------
+bool
+    True if successful, False otherwise.
+"""
+endsnippet
+
+snippet """fl "Function docstring, long" m
+"""This is an example of a module level function.
+
+Function parameters should be documented in the ``Parameters`` section.
+The name of each parameter is required. The type and description of each
+parameter is optional, but should be included if not obvious.
+
+If ``*args`` or ``**kwargs`` are accepted,
+they should be listed as ``*args`` and ``**kwargs``.
+
+The format for a parameter is::
+
+    name : type
+	description
+
+	The description may span multiple lines. Following lines
+	should be indented to match the first line of the description.
+	The ": type" is optional.
+
+	Multiple paragraphs are supported in parameter
+	descriptions.
+
+Parameters
+----------
+param1 : int
+    The first parameter.
+param2 : :obj:`str`, optional
+    The second parameter.
+*args
+    Variable length argument list.
+**kwargs
+    Arbitrary keyword arguments.
+
+Returns
+-------
+bool
+    True if successful, False otherwise.
+
+    The return type is not optional. The ``Returns`` section may span
+    multiple lines and paragraphs. Following lines should be indented to
+    match the first line of the description.
+
+    The ``Returns`` section supports any reStructuredText formatting,
+    including literal blocks::
+
+	{
+	    'param1': param1,
+    multiple lines and paragraphs. Following lines should be indented to
+    match the first line of the description.
+
+    The ``Returns`` section supports any reStructuredText formatting,
+    including literal blocks::
+
+	{
+	    'param1': param1,
+
+    The return type is not optional. The ``Returns`` section may span
+    multiple lines and paragraphs. Following lines should be indented to
+    match the first line of the description.
+
+    The ``Returns`` section supports any reStructuredText formatting,
+    including literal blocks::
+
+	{
+	    'param1': param1,
+	    'param2': param2
+	}
+
+Raises
+------
+AttributeError
+    The ``Raises`` section is a list of all exceptions
+    that are relevant to the interface.
+ValueError
+    If `param2` is equal to `param1`.
+
+"""
+endsnippet
+
+snippet """g "Generator docstring" m
+"""Generators have a ``Yields`` section instead of a ``Returns`` section.
+
+Parameters
+----------
+n : int
+    The upper limit of the range to generate, from 0 to `n` - 1.
+
+Yields
+------
+int
+    The next number in the range of 0 to `n` - 1.
+
+Examples
+--------
+Examples should be written in doctest format, and should illustrate how
+to use the function.
+
+>>> print([i for i in example_generator(4)])
+[0, 1, 2, 3]
+
+"""
+endsnippet
+
+snippet """E "Exception docstring" m
+"""Exceptions are documented in the same way as classes.
+
+The __init__ method may be documented in either the class level
+docstring, or as a docstring on the __init__ method itself.
+
+Either form is acceptable, but the two should not be mixed. Choose one
+convention to document the __init__ method and be consistent with it.
+
+Note
+----
+Do not include the `self` parameter in the ``Parameters`` section.
+
+Parameters
+----------
+msg : str
+    Human readable string describing the exception.
+code : :obj:`int`, optional
+    Numeric error code.
+
+Attributes
+----------
+msg : str
+    Human readable string describing the exception.
+code : int
+    Numeric error code.
+
+"""
+endsnippet
+
+snippet """c "Class __init__ docstring" m
+"""I hate this line being here
+
+... rest of the docstring
+
+Note
+----
+Do not include the `self` parameter in the ``Parameters`` section.
+
+Parameters
+----------
+param1 : str
+    Description of `param1`.
+param2 : list(str)
+    Description of `param2`. Multiple
+    lines are supported.
+param3 : :obj:`int`, optional
+    Description of `param3`.
+
+Attributes
+----------
+attr1 : str
+    Description of `attr1`.
+attr2 : :obj:`int`, optional
+    Description of `attr2`.
+
+"""
+endsnippet
+
+snippet pgmin "pygame minimal" mt
+#!/bin/env python3
+
+import pygame
+
+TITLE = 'pygame minimal template'
+SCREEN = pygame.Rect(0, 0, 1024, 768)
+FPS = 60
+DT_MAX = 3 / FPS
+
+pygame.init()
+clock = pygame.time.Clock()
+pygame.display.set_caption(TITLE)
+screen = pygame.display.set_mode(SCREEN.size)
+
+running = True
+while running:
+    dt = min(clock.tick(FPS) / 1000.0, DT_MAX)
+
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            running = False
+        elif e.type == pygame.KEYDOWN:
+            if e.key == pygame.K_ESCAPE:
+                running = False
+
+    screen.fill('black')
+
+    ...
+
+    pygame.display.flip()
+    pygame.display.set_caption(f'{TITLE} - time={pygame.time.get_ticks()/1000:.2f}  fps={clock.get_fps():.2f}')
+
+endsnippet
+
+
+snippet sdl2 "pygame minimal sdl2" mt
+#!/bin/env python3
+
+import pygame
+import pygame._sdl2 as sdl2
+
+TITLE = 'pygame minimal template'
+SCREEN = pygame.Rect(0, 0, 1024, 768)
+FPS = 60
+DT_MAX = 3 / FPS
+
+clock = pygame.time.Clock()
+window = pygame.Window(title=TITLE, size=SCREEN.size)
+renderer = sdl2.Renderer(window)
+
+running = True
+while running:
+    dt = min(clock.tick(FPS) / 1000.0, DT_MAX)
+
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            running = False
+        elif e.type == pygame.KEYDOWN:
+            if e.key == pygame.K_ESCAPE:
+                running = False
+
+    renderer.clear()
+    ...
+    renderer.present()
+
+    window.title = f'{TITLE} - time={pygame.time.get_ticks()/1000:.2f}  fps={clock.get_fps():.2f}'
+endsnippet
+
+snippet tgroup "Sprite group for pygame sdl2 textures" mt
+class TGroup(pygame.sprite.Group):
+    def draw(self, unused):
+        for s in self.sprites():
+            s.texture.draw(dstrect=s.rect)
+endsnippet
+
+snippet bench "bench!"
+from statistics import mean, median, stdev
+from timeit import timeit
+
+def bench(*fns, runs=5, number=1_000_000):
+    for fn in fns:
+        print(fn)
+        print('-' * 72)
+        timings = []
+        for i in range(runs):
+            timings.append(timeit(fn, number=number))
+            print(f'{i}: {timings[-1]}')
+
+        print(f'{mean(timings)=:.5f}  {median(timings)=:.5f}  {stdev(timings)=:.5f}\n')
+endsnippet
+
+snippet descriptor "descriptor template" mt
+class Descriptor:
+    def __set_name__(self, obj, name):
+        self.attrib = f'__lerpthing_{name}'
+
+    def __set__(self, obj, val):
+        obj.__setattr__(self.attrib, val)
+
+    def __get__(self, obj, parent):
+        if obj is None: return self
+
+        val = obj.__getattribute__(self.attrib)
+        return val() if isinstance(val, LerpThing) else val
+endsnippet
