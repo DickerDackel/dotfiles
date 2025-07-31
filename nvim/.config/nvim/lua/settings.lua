@@ -62,3 +62,8 @@ vim.cmd "let g:UltiSnipsEditSplit='context'"
 vim.cmd "let g:ultisnips_python_quoting_style = 'single'"
 vim.cmd "let g:ultisnips_python_triple_quoting_style = 'double'"
 
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    vim.cmd "set formatexpr=<CR>"
+  end
+})
