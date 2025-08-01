@@ -196,8 +196,8 @@ return {
     local servers = {
       clangd = {},
       -- gopls = {},
-      -- ML basedpyright = {}
-      -- ML jedi_language_server = {},
+      -- basedpyright = {},
+      -- jedi_language_server = {},
       ty = {},
       ruff = {},
       -- rust_analyzer = {},
