@@ -56,7 +56,9 @@ return { -- Autocompletion
       -- <c-k>: Toggle signature help
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      preset = 'super-tab',
+      preset = 'default',
+      ['<C-space>'] = { 'show_documentation' },
+
 
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
       --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -68,10 +70,33 @@ return { -- Autocompletion
       nerd_font_variant = 'mono',
     },
 
+    -- completion = {
+    --   -- By default, you may press `<c-space>` to show the documentation.
+    --   -- Optionally, set `auto_show = true` to show the documentation after a delay.
+    --   documentation = { auto_show = false, auto_show_delay_ms = 500 },
+    -- },
+    
     completion = {
-      -- By default, you may press `<c-space>` to show the documentation.
-      -- Optionally, set `auto_show = true` to show the documentation after a delay.
-      documentation = { auto_show = false, auto_show_delay_ms = 500 },
+      documentation = {
+	auto_show = false,
+	auto_show_delay_ms = 200,
+	window = {
+	  border = "rounded",
+	},
+      },
+      menu = {
+	draw = {
+	  columns = {
+	    { "kind_icon" },
+	    { "label", "label_description", gap = 1 },
+	    { "source_name" }
+	  },
+	},
+      },
+      ghost_text = {
+	enabled = true,
+	show_without_selection = true,
+      },
     },
 
     sources = {
@@ -93,6 +118,23 @@ return { -- Autocompletion
     fuzzy = { implementation = 'lua' },
 
     -- Shows a signature help window while you type arguments for a function
-    signature = { enabled = true },
+    -- signature = { enabled = true, show_documentation = true },
+    signature = {
+      enabled = true,
+      trigger = {
+	enabled = true,
+	show_on_keyword = false,
+	show_on_trigger_character = true,
+	show_on_insert = false,
+	show_on_insert_on_trigger_character = true,
+      },
+      window = {
+	-- direction_priority = { 's', 'n' },
+	direction_priority = { 's' },
+	border = "rounded",
+	treesitter_highlighting = true,
+	show_documentation = true,
+      },
+    },
   },
 }
