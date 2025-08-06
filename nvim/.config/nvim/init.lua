@@ -11,7 +11,6 @@ require("lazy").setup({
 
   require("plugins.testing.align"),
   require("plugins.testing.conform"),
-  require("plugins.testing.dap"),
   require("plugins.testing.harpoon"),
   require("plugins.testing.lualine"),
   require("plugins.testing.obsidian"),
