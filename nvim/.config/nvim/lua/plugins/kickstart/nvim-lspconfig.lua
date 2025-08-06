@@ -22,34 +22,34 @@ return { -- Main LSP Configuration
         -- or a suggestion from your LSP for this to activate.
         map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
-        -- Find references for the word under your cursor.
-        map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        -- -- Find references for the word under your cursor.
+        -- map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
-        -- Jump to the implementation of the word under your cursor.
-        --  Useful when your language has ways of declaring types without an actual implementation.
-        map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        -- -- Jump to the implementation of the word under your cursor.
+        -- --  Useful when your language has ways of declaring types without an actual implementation.
+        -- map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
-        -- Jump to the definition of the word under your cursor.
-        --  This is where a variable was first declared, or where a function is defined, etc.
-        --  To jump back, press <C-t>.
-        map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        -- -- Jump to the definition of the word under your cursor.
+        -- --  This is where a variable was first declared, or where a function is defined, etc.
+        -- --  To jump back, press <C-t>.
+        -- map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
         map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-        -- Fuzzy find all the symbols in your current document.
-        --  Symbols are things like variables, functions, types, etc.
-        map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+        -- -- Fuzzy find all the symbols in your current document.
+        -- --  Symbols are things like variables, functions, types, etc.
+        -- map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
 
-        -- Fuzzy find all the symbols in your current workspace.
-        --  Similar to document symbols, except searches over your entire project.
-        map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+        -- -- Fuzzy find all the symbols in your current workspace.
+        -- --  Similar to document symbols, except searches over your entire project.
+        -- map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
-        -- Jump to the type of the word under your cursor.
-        --  Useful when you're not sure what type a variable is and you want to see
-        --  the definition of its *type*, not where it was *defined*.
-        map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        -- -- Jump to the type of the word under your cursor.
+        -- --  Useful when you're not sure what type a variable is and you want to see
+        -- --  the definition of its *type*, not where it was *defined*.
+        -- map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
@@ -150,58 +150,121 @@ return { -- Main LSP Configuration
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
-      -- clangd = {},
-      -- pylsp = { },
-
-      -- basedpyright = {
-	-- settings = {
-	  -- basedpyright = {
-	    -- analysis = {
-	      -- useLibraryCodeForTypes = true,
-	      -- typeCheckingMode = 'basic',
-	      -- diagnosticMode = "openFilesOnly",
-	      -- autoSearchPath = true,
-	      -- inlayHints = {
-		-- callArgumentNames = true,
-	      -- },
-	      -- extraPaths = {
-		-- '...',
-		-- '...',
-	      -- },
-	      -- diagnosticSeverityOverrides = {
-		-- reportAny = false,
-		-- reportMissingTypeArgument = false,
-		-- reportMissingTypeStubs = false,
-		-- reportUnknownArgumentType = false,
-		-- reportUnknownMemberType = false,
-		-- reportUnknownParameterType = false,
-		-- reportUnknownVariableType = false,
-		-- reportUnusedCallResult = false,
-		-- reportUnannotatedClassAttribute = false,
-	      -- },
-
-	    -- },
-	    -- python = {
-	      -- venvPath = '.venv',
-	      -- -- venv = 'venv',
-	    -- },
-	  -- }
-	-- }
-
-      -- },
+      clangd = {},
+      -- basedpyright = { },
       -- jedi_language_server = {},
-      ty = {},
+      -- ty = {},
       ruff = {},
-      -- rust_analyzer = {},
-      -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-      --
-      -- Some languages (like typescript) have entire language plugins that can be useful:
-      --    https://github.com/pmizio/typescript-tools.nvim
-      --
-      -- But for many setups, the LSP (`ts_ls`) will work just fine
-      -- ts_ls = {},
-      --
+      pylsp = {
+	pylsp = {
+	  configurationSources = {'pycodestyle'},
+	  rope = {
+	    extensionModules = null,  -- string = null - Builtin and c-extension modules that are allowed to be imported and inspected by rope.
+	    ropeFolder = null,  -- array of unique string items = null - The name of the folder in which rope stores project configurations and data. Pass null for not using such a folder at all.
+	  },
+	  signature = {
+	    formatter = "black",  -- string (one of: 'black', 'ruff', None) = "black" - Formatter to use for reformatting signatures in docstrings.
+	    line_length = 88,  -- number = 88 - Maximum line length in signatures.
+	  },
+	  plugins = {
+	    autopep8 = { enabled = false }, -- [true] - Enable or disable the plugin (disabling required to use yapf).
+	    flake8 = {
+	      config = null,  -- str = null - Path to the config file that will be the authoritative config source.
+	      enabled = false,  -- bool = false - Enable or disable the plugin.
+	      exclude = {},   -- list[str] - List of files or directories to exclude.
+	      extendIgnore = {},  -- list[str] = [] - List of errors and warnings to append to ignore list.
+	      extendSelect = {},  -- list[str] = [] - List of errors and warnings to append to select list.
+	      executable = "flake8",  -- str = "flake8" - Path to the flake8 executable.
+	      filename = null,  -- str = null - Only check for filenames matching the patterns in this list.
+	      hangClosing = null,  -- bool = null - Hang closing bracket instead of matching indentation of opening bracket's line.
+	      ignore = {},  -- list[str] = [] - List of errors and warnings to ignore (or skip).
+	      maxComplexity = null,  -- int = null - Maximum allowed complexity threshold.
+	      maxLineLength= null,  -- int = null - Maximum allowed line length for the entirety of this run.
+	      indentSize = null,  -- int = null - Set indentation spaces.
+	      perFileIgnores = {},  -- list[str] = [] - A pairing of filenames and violation codes that defines which violations to ignore in a particular file, for example: ["file_path.py:W305,W304"]).
+	      select = {},  -- list[str] = null - List of errors and warnings to enable.
+	    },
+	    jedi8 = {
+	      jedi = {
+		auto_import_modules = {"numpy"},  -- array of string items = ["numpy"] - List of module names for jedi.settings.auto_import_modules.
+		extra_paths = {},  -- array of string items = [] - Define extra paths for jedi.Script.
+		prioritize_extra_paths = false,  -- boolean = false - Whether to place extra_paths at the beginning (true) or end (false) of sys.path
+		env_vars = null,  -- object = null - Define environment variables for jedi.Script and Jedi.names.
+		environment = null,  -- string = null - Define environment for jedi.Script and Jedi.names.
+	      },
+	      jedi_completion = {
+		enabled = true,  -- boolean = true - Enable or disable the plugin.
+		include_params = true,  -- boolean = true - Auto-completes methods and classes with tabstops for each parameter.
+		include_class_objects = false,  -- boolean = false - Adds class objects as a separate completion item.
+		include_function_objects = false,  -- boolean = false - Adds function objects as a separate completion item.
+		fuzzy = false,  -- boolean = false - Enable fuzzy when requesting autocomp
+		eager = false,  -- boolean = false - Resolve documentation and detail eagerly.
+		resolve_at_most = 25,  -- integer = 25 - How many labels and snippets (at most) should be resolved?
+		cache_for = {"pandas", "numpy", "tensorflow", "matplotlib"},  -- array of string items = ["pandas", "numpy", "tensorflow", "matplotlib"] - Modules for which labels and snippets should be cached.
+		enabled = true,  -- boolean = true - Enable or disable the plugin.
+		follow_imports = true,  -- boolean = true - The goto call will follow imports.
+		follow_builtin_imports = true,  -- boolean = true - If follow_imports is True will decide if it follow builtin imports.
+		follow_builtin_definitions = true,  -- boolean = true - Follow builtin and extension definitions to stubs.
+	      },
+	      jedi_hover = { enabled = true },  -- boolean = true - Enable or disable the plugin.
+	      jedi_references = { enabled = true },  -- boolean = true - Enable or disable the plugin.
+	      jedi_signature_help = { enabled = true },  -- boolean = true - Enable or disable the plugin.
+	      jedi_symbols = {
+		enabled = true,  -- boolean = true - Enable or disable the plugin.
+		all_scopes = true,  -- boolean = true - If True lists the names of all scopes instead of only the module namespace.
+		include_import_symbols = true,  -- boolean = true - If True includes symbols imported from other libraries.
+	      },
+	      jedi_type_definition = { enabled = true },  -- boolean = true - Enable or disable the plugin.
+	    },
+	    mccabe = {
+	      enabled = true,  -- boolean = true - Enable or disable the plugin.
+	      threshold = 15,  -- integer = 15 - The minimum threshold that triggers warnings about cyclomatic complexity.
+	    },
 
+	    pycodestyle = { ignore = {'W391'}, maxLineLength = 100 },
+	    jedi_completion = { enabled = true },
+	    preload = {
+	      enabled = true,  -- boolean = true - Enable or disable the plugin.
+	      modules = {},  -- array of unique string items = [] - List of modules to import on startup
+	    },
+	    pycodestyle = {
+	      enabled = true,  -- boolean = true - Enable or disable the plugin.
+	      exclude = {},  -- array of unique string items = [] - Exclude files or directories which match these patterns.
+	      filename = {},  -- array of unique string items = [] - When parsing directories, only check filenames matching these patterns.
+	      select = null,  -- array of unique string items = null - Select errors and warnings
+	      ignore = {},  -- array of unique string items = [] - Ignore errors and warnings
+	      hangClosing = null,  -- boolean = null - Hang closing bracket instead of matching indentation of opening bracket's line.
+	      maxLineLength = null,  -- integer = null - Set maximum allowed line length.
+	      indentSize = null,  -- integer = null - Set indentation spaces.
+	      enabled = false,  -- boolean = false - Enable or disable the plugin.
+	      convention = null,  -- string (one of: 'pep257', 'numpy', 'google', None) = null - Choose the basic list of checked errors by specifying an existing convention.
+	      addIgnore = {},  -- array of unique string items = [] - Ignore errors and warnings in addition to the specified convention.
+	      addSelect = {},  -- array of unique string items = [] - Select errors and warnings in addition to the specified convention.
+	      ignore = {},  -- array of unique string items = [] - Ignore errors and warnings
+	      select = null,  -- array of unique string items = null - Select errors and warnings
+	      match = "(?!test_).*\\.py",  -- string = "(?!test_).*\\.py" - Check only files that exactly match the given regular expression; default is to match files that don't start with 'test_' but end with '.py'.
+	      matchDir = "[^\\.].*",  -- string = "[^\\.].*" - Search only dirs that exactly match the given regular expression; default is to match dirs which do not begin with a dot.
+	    },
+	    pyflakes = { enabled = true },  -- boolean = true - Enable or disable the plugin.
+	    pylint = {
+	      enabled = false,  -- boolean = false - Enable or disable the plugin.
+	      args = {},  -- array of non-unique string items = [] - Arguments to pass to pylint.
+	      executable = null,  -- string = null - Executable to run pylint with. Enabling this will run pylint on unsaved files via stdin. Can slow down workflow. Only works with python3.
+	    },
+	    rope = {
+	      rope_autoimport = {
+		enabled = false,  -- boolean = false - Enable or disable autoimport. If false, neither completions nor code actions are enabled. If true, the respective features can be enabled or disabled individually.
+		completions = { enabled = true },  -- boolean = true - Enable or disable autoimport completions.
+		code_actions = { enabled = true },  -- boolean = true - Enable or disable autoimport code actions (e.g. for quick fixes).
+		memory = false,  -- boolean = false - Make the autoimport database memory only. Drastically increases startup time.
+		enabled = false,  -- boolean = false - Enable or disable the plugin.
+		eager = false,  -- boolean = false - Resolve documentation and detail eagerly.
+	      }
+	    },
+	    yapf = { enabled = true },  -- boolean = true - Enable or disable the plugin.
+	  }
+	}
+      },
       lua_ls = {
         -- cmd = { ... },
         -- filetypes = { ... },
