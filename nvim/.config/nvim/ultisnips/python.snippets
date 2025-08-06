@@ -357,16 +357,64 @@ def bench(*fns, runs=5, number=1_000_000):
 endsnippet
 
 snippet descriptor "descriptor template" mt
-class Descriptor:
-    def __set_name__(self, obj, name):
-        self.attrib = f'__lerpthing_{name}'
+from typing import Type, TypeVar
 
-    def __set__(self, obj, val):
+T = TypeVar("T")
+
+
+class MyDescriptor[T]:
+    def __set_name__(self, obj: object, name: str) -> None:
+        self.attrib = f'__my_descriptor_{name}'
+
+    def __set__(self, obj: T, val: T) -> None:
         obj.__setattr__(self.attrib, val)
 
-    def __get__(self, obj, parent):
+    def __get__(self, obj: T | None, objtype: Type[T]) -> T:
         if obj is None: return self
 
-        val = obj.__getattribute__(self.attrib)
-        return val() if isinstance(val, LerpThing) else val
+        return obj.__getattribute__(self.attrib)
+endsnippet
+
+snippet longbench "long bench"
+def bench(*fns, runs=5, number=1_000_000) -> None:
+    summary = []
+    outer_timings = []
+    for fn in fns:
+        print(fn.__name__)
+        print('-' * 72)
+        timings = []
+        for i in range(runs):
+            timings.append(timeit(fn, number=number))
+            print(f'{i}: {timings[-1]}')
+
+        outer_timings.append((fn.__name__, mean(timings), median(timings)))
+        summary.append(
+            f'{outer_timings[-1][0]}: '
+            f'mean={outer_timings[-1][1]:.5f}  '
+            f'median={outer_timings[-1][2]:.5f}  '
+            f'stdev={stdev(timings):.5f}')
+        print(summary[-1], end='\n\n')
+
+    ordered_means = sorted(outer_timings, key=lambda x: x[1])
+    ordered_medians = sorted(outer_timings, key=lambda x: x[2])
+
+    outer_mean = mean([_[1] for _ in outer_timings])
+    outer_median = median([_[2] for _ in outer_timings])
+    outer_stdev = (stdev([_[1] for _ in outer_timings]),
+                   stdev([_[2] for _ in outer_timings]))
+
+    print(f"""{'=' * 72}
+{'\n'.join(summary)}
+
+Mean over runs: {outer_mean:.5f} --> {', '.join([_[0] for _ in ordered_means])}
+Median over runs: {outer_median:.5f} --> {', '.join([_[0] for _ in ordered_medians])}
+Stdev over means runs: {outer_stdev[0]:.5f}
+Stdev over medians runs: {outer_stdev[1]:.5f}
+
+""")
+
+fns = [f1, f2, f3, ...]
+shuffle(fns)
+
+bench(*fns, number=10_000)
 endsnippet
