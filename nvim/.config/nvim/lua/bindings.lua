@@ -8,6 +8,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- Mine...
 ------------------------------------------------------------------------
 vim.keymap.set("n", "<C-p>", "<cmd>Files<CR>")
+-- vim.keymap.set("n", "<C-p>", function() Snacks.picker.smart() end)
 vim.keymap.set("n", "<C-l>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<C-j>", function()
@@ -22,8 +23,7 @@ vim.keymap.set("n", "<leader>n", "<cmd>set invnumber<CR>")
 
 vim.keymap.set("n", "<leader>F", "<cmd>set foldmethod=indent<CR>")
 vim.keymap.set("n", "<leader>Q", "!!$SHELL<CR>")
--- vsplit window with next file in buffer list
-vim.keymap.set("n", "<leader>S", "<cmd>vsplit<CR><C-W><C-j>:next<CR>")
+vim.keymap.set("n", "<leader>S", "<cmd>MiniTrailspace.trim()<CR>")
 vim.keymap.set("n", "<leader>T", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>")
 vim.keymap.set("n", "<leader>e", 'yy:@"<CR>')
