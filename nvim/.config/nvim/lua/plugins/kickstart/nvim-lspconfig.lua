@@ -167,20 +167,21 @@ return { -- Main LSP Configuration
 	    line_length = 88,  -- number = 88 - Maximum line length in signatures.
 	  },
 	  plugins = {
-	    autopep8 = { enabled = false }, -- [true] - Enable or disable the plugin (disabling required to use yapf).
+	--     autopep8 = { enabled = false }, -- [true] - Enable or disable the plugin (disabling required to use yapf).
 	    flake8 = {
-	      config = null,  -- str = null - Path to the config file that will be the authoritative config source.
 	      enabled = false,  -- bool = false - Enable or disable the plugin.
+
+	      config = null,  -- str = null - Path to the config file that will be the authoritative config source.
 	      exclude = {},   -- list[str] - List of files or directories to exclude.
+	      executable = "flake8",  -- str = "flake8" - Path to the flake8 executable.
 	      extendIgnore = {},  -- list[str] = [] - List of errors and warnings to append to ignore list.
 	      extendSelect = {},  -- list[str] = [] - List of errors and warnings to append to select list.
-	      executable = "flake8",  -- str = "flake8" - Path to the flake8 executable.
 	      filename = null,  -- str = null - Only check for filenames matching the patterns in this list.
 	      hangClosing = null,  -- bool = null - Hang closing bracket instead of matching indentation of opening bracket's line.
 	      ignore = {},  -- list[str] = [] - List of errors and warnings to ignore (or skip).
+	      indentSize = null,  -- int = null - Set indentation spaces.
 	      maxComplexity = null,  -- int = null - Maximum allowed complexity threshold.
 	      maxLineLength= null,  -- int = null - Maximum allowed line length for the entirety of this run.
-	      indentSize = null,  -- int = null - Set indentation spaces.
 	      perFileIgnores = {},  -- list[str] = [] - A pairing of filenames and violation codes that defines which violations to ignore in a particular file, for example: ["file_path.py:W305,W304"]).
 	      select = {},  -- list[str] = null - List of errors and warnings to enable.
 	    },
@@ -221,7 +222,6 @@ return { -- Main LSP Configuration
 	      threshold = 15,  -- integer = 15 - The minimum threshold that triggers warnings about cyclomatic complexity.
 	    },
 
-	    pycodestyle = { ignore = {'W391'}, maxLineLength = 100 },
 	    jedi_completion = { enabled = true },
 	    preload = {
 	      enabled = true,  -- boolean = true - Enable or disable the plugin.
@@ -229,21 +229,20 @@ return { -- Main LSP Configuration
 	    },
 	    pycodestyle = {
 	      enabled = true,  -- boolean = true - Enable or disable the plugin.
+
+	      addIgnore = {'W391'},  -- array of unique string items = [] - Ignore errors and warnings in addition to the specified convention.
+	      addSelect = {},  -- array of unique string items = [] - Select errors and warnings in addition to the specified convention.
+	      convention = null,  -- string (one of: 'pep257', 'numpy', 'google', None) = null - Choose the basic list of checked errors by specifying an existing convention.
+	      enabled = false,  -- boolean = false - Enable or disable the plugin.
 	      exclude = {},  -- array of unique string items = [] - Exclude files or directories which match these patterns.
 	      filename = {},  -- array of unique string items = [] - When parsing directories, only check filenames matching these patterns.
-	      select = null,  -- array of unique string items = null - Select errors and warnings
-	      ignore = {},  -- array of unique string items = [] - Ignore errors and warnings
 	      hangClosing = null,  -- boolean = null - Hang closing bracket instead of matching indentation of opening bracket's line.
-	      maxLineLength = null,  -- integer = null - Set maximum allowed line length.
-	      indentSize = null,  -- integer = null - Set indentation spaces.
-	      enabled = false,  -- boolean = false - Enable or disable the plugin.
-	      convention = null,  -- string (one of: 'pep257', 'numpy', 'google', None) = null - Choose the basic list of checked errors by specifying an existing convention.
-	      addIgnore = {},  -- array of unique string items = [] - Ignore errors and warnings in addition to the specified convention.
-	      addSelect = {},  -- array of unique string items = [] - Select errors and warnings in addition to the specified convention.
 	      ignore = {},  -- array of unique string items = [] - Ignore errors and warnings
-	      select = null,  -- array of unique string items = null - Select errors and warnings
+	      indentSize = null,  -- integer = null - Set indentation spaces.
 	      match = "(?!test_).*\\.py",  -- string = "(?!test_).*\\.py" - Check only files that exactly match the given regular expression; default is to match files that don't start with 'test_' but end with '.py'.
 	      matchDir = "[^\\.].*",  -- string = "[^\\.].*" - Search only dirs that exactly match the given regular expression; default is to match dirs which do not begin with a dot.
+	      maxLineLength = 100,  -- integer = null - Set maximum allowed line length.
+	      select = null,  -- array of unique string items = null - Select errors and warnings
 	    },
 	    pyflakes = { enabled = true },  -- boolean = true - Enable or disable the plugin.
 	    pylint = {
