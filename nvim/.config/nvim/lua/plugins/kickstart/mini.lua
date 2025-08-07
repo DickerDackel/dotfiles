@@ -1,5 +1,8 @@
 return { -- Collection of various small independent plugins/modules
   'echasnovski/mini.nvim',
+  dependencies = {
+    'echasnovski/mini.trailspace', 
+  },
   config = function()
     -- Better Around/Inside textobjects
     --
