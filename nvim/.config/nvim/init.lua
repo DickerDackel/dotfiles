@@ -1,7 +1,4 @@
 require("config.lazy")
-require("settings")
-require("bindings")
-require("colors")
 -- require("questionable_kickstart_configs")
 
 -- Don't use automatic includes.  I want control and sometimes keep config
@@ -17,12 +14,13 @@ require("lazy").setup({
   require("plugins.testing.snacks"),
   require("plugins.testing.tree"),
   require("plugins.testing.trouble"),
+  require("plugins.testing.mini"),
 
   require("plugins.kickstart.blink"),
   require("plugins.kickstart.fidget"),
   require("plugins.kickstart.init"),
   require("plugins.kickstart.lazydev"),
-  require("plugins.kickstart.mini"),
+  -- require("plugins.kickstart.mini"),
   require("plugins.kickstart.nvim-lspconfig"),
   require("plugins.kickstart.nvim-treesitter"),
   require("plugins.kickstart.telescope"),
@@ -48,6 +46,10 @@ require("lazy").setup({
 -- require("lualine").setup({
 --     options = { theme = "ayu_dark" },
 -- })
+
+require("settings")
+require("bindings")
+require("colors")
 
 vim.diagnostic.config({
     virtual_text = false,

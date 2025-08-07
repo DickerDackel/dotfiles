@@ -23,7 +23,7 @@ vim.keymap.set("n", "<leader>n", "<cmd>set invnumber<CR>")
 
 vim.keymap.set("n", "<leader>F", "<cmd>set foldmethod=indent<CR>")
 vim.keymap.set("n", "<leader>Q", "!!$SHELL<CR>")
-vim.keymap.set("n", "<leader>S", "<cmd>MiniTrailspace.trim()<CR>")
+vim.keymap.set("n", "<leader>S", MiniTrailspace.trim)
 vim.keymap.set("n", "<leader>T", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>")
 vim.keymap.set("n", "<leader>e", 'yy:@"<CR>')
