@@ -1,8 +1,5 @@
 require("config.lazy")
--- require("questionable_kickstart_configs")
-
--- Don't use automatic includes.  I want control and sometimes keep config
--- files in the directory because I might re-enable them.
+--
 require("lazy").setup({
   require("plugins.testing.neodev"),
 
@@ -12,6 +9,7 @@ require("lazy").setup({
   require("plugins.testing.lualine"),
   require("plugins.testing.obsidian"),
   require("plugins.testing.snacks"),
+  require("plugins.testing.tabline"),
   require("plugins.testing.tree"),
   require("plugins.testing.trouble"),
   require("plugins.testing.mini"),
@@ -20,7 +18,6 @@ require("lazy").setup({
   require("plugins.kickstart.fidget"),
   require("plugins.kickstart.init"),
   require("plugins.kickstart.lazydev"),
-  -- require("plugins.kickstart.mini"),
   require("plugins.kickstart.nvim-lspconfig"),
   require("plugins.kickstart.nvim-treesitter"),
   require("plugins.kickstart.telescope"),
@@ -38,14 +35,14 @@ require("lazy").setup({
 
   -- require("plugins.kickstart.git-signs"),
 
-  install = { colorscheme = { "vividchalk"} },
-  install = { colorscheme = { "golden"} },
-  install = { colorscheme = { "ayu"} }, -- Fix background
+  -- install = { colorscheme = { "vividchalk"} },
+  -- install = { colorscheme = { "golden"} },
+  -- install = { colorscheme = { "ayu"} }, -- Fix background
 })
 
--- require("lualine").setup({
---     options = { theme = "ayu_dark" },
--- })
+require("lualine").setup({
+    options = { theme = "ayu_dark" },
+})
 
 require("settings")
 require("bindings")
