@@ -37,3 +37,6 @@ vim.keymap.set("n", "<leader>s", "<cmd>split<CR><C-W><C-j>:next<CR>")
 vim.keymap.set("n", "<leader>t", "<cmd>TagbarToggle<CR>")
 vim.keymap.set("n", "<leader>w", "<cmd>set invwrap<CR>")
 vim.keymap.set("n", "<leader>R", "<cmd>LSPRestart<CR>")
+
+-- I hate accidental clicks from the touchpad, but I like scrolling
+vim.keymap.set({'n', 'i', 'v', 'c', 'x'}, "<LeftMouse>", "<cmd><nop><CR>")
