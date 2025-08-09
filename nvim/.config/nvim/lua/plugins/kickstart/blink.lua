@@ -57,7 +57,7 @@ return { -- Autocompletion
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
       preset = 'enter',
-      ['<C-space>'] = { 'show_documentation' },
+      ['<C-Space>'] = { 'show_documentation' },
       ['<Tab>'] = { 'select_next', 'fallback_to_mappings' },
       ['<S-Tab>'] = { 'select_prev', 'fallback_to_mappings' },
 
@@ -136,7 +136,7 @@ return { -- Autocompletion
 	direction_priority = { 's' },
 	border = "rounded",
 	treesitter_highlighting = true,
-	show_documentation = true,
+	show_documentation = false,
       },
     },
   },
