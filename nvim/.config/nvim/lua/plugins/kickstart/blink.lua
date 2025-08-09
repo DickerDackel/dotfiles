@@ -56,8 +56,10 @@ return { -- Autocompletion
       -- <c-k>: Toggle signature help
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      preset = 'super-tab',
+      preset = 'enter',
       ['<C-space>'] = { 'show_documentation' },
+      ['<Tab>'] = { 'select_next', 'fallback_to_mappings' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback_to_mappings' },
 
 
       -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
@@ -77,6 +79,7 @@ return { -- Autocompletion
     -- },
     
     completion = {
+      list = { selection = { auto_insert = false } },
       documentation = {
 	auto_show = false,
 	auto_show_delay_ms = 200,
