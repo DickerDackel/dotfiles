@@ -17,6 +17,7 @@ lint.ignore = [
     "ANN401",  # ANN401 Dynamically typed expressions (typing.Any) are disallowed in `*args`
     "E201",  # E201 whitespace after '('
     "E241",  # E241 multiple spaces after ','
+    "E265",  # E265 block comment should start with '# '
     "E501",  # E501 line-too-long - Line too long ({width} > {limit})
     "E701",  # E701 Multiple statements on one line (colon)
     "E731",  # E731 lambda-assignment - Do not assign a lambda expression, use a def
@@ -28,6 +29,7 @@ lint.ignore = [
     # "I001",  # I001 unsorted-imports - isort wants no blank line between imports and froms
     # # "ANN",  # flake8-annotations (ANN)
 ]
+
 line-length = 128
 
 [tool.ruff.lint.isort]
