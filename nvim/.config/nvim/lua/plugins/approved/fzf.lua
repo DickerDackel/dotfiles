@@ -12,7 +12,9 @@ return { "ibhagwan/fzf-lua",
       no_ignore = false,  -- Do not not use .gitignore
 
       -- cmd = "~/.local/bin/fdwrapper",
-      fd_opts = [[--color=never]],
+      -- NOTE: --type f will disable .gitignore.  Must be reenabled with
+      -- --ignore
+      fd_opts = [[--color=never --type f --type l --ignore]],
       -- cmd = "fd --color=never --type f --type l --ignore --follow",
       -- fd_opts = [[--color=never --type f --type l --ignore]],
     },
