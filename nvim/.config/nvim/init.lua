@@ -20,7 +20,7 @@ require("lazy").setup({
   require("plugins.kickstart.lazydev"),
   require("plugins.kickstart.nvim-lspconfig"),
   require("plugins.kickstart.nvim-treesitter"),
-  require("plugins.kickstart.telescope"),
+  -- require("plugins.kickstart.telescope"),
   require("plugins.kickstart.todo-comments"),
   require("plugins.kickstart.which-key"),
 
