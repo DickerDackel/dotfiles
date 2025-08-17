@@ -6,6 +6,7 @@ return {
     notify_on_error = false,
     formatters_by_ft = {
       -- python = { "ruff", "ruff_organize_imports", "ruff_format" },
+      python = { "isort", "yapf" },
       lua = { "stylua" },
     },
     format_on_save = function(bufnr) return nil end,
