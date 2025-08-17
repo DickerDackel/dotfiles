@@ -96,6 +96,9 @@ return { -- Autocompletion
 	  },
 	},
       },
+      -- ML: enabling this is fucking annoying.  It puts () behind a completed
+      -- function.
+      accept = { auto_brackets = { enabled = false } },
       ghost_text = {
 	enabled = true,
 	show_without_selection = true,
