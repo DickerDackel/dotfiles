@@ -44,9 +44,13 @@ require("lualine").setup({
     options = { theme = "ayu_dark" },
 })
 
-require("settings")
-require("bindings")
-require("colors")
+require("config.settings")
+require("config.bindings")
+
+-- vim.cmd("colorscheme vividchalk")
+vim.cmd("colorscheme golden")
+-- vim.cmd("colorscheme ayu")
+require("config.colors")  -- patch colors afterselecting a theme
 
 vim.diagnostic.config({
     virtual_text = false,
