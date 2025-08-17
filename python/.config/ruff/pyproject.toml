@@ -7,13 +7,13 @@ lint.select = [
 ]
 
 lint.extend-select = [
-    "ANN",  # flake8-annotations (ANN) ...
     "E1", "E2", "E3", "E5", "W",  # pycodestyle previews
     # "I",  # isort (I)
     "PLR",  # Refactor (PLR)
 ]
 
 lint.ignore = [
+    "ANN",  # flake8/ruff annotations (ANN) disabled globally right now.  Goes back to extend probably
     "ANN401",  # ANN401 Dynamically typed expressions (typing.Any) are disallowed in `*args`
     "E201",  # E201 whitespace after '('
     "E241",  # E241 multiple spaces after ','
@@ -24,6 +24,7 @@ lint.ignore = [
     "E741",  # E741 Ambiguous variable name: `l`
     "PLR0913",  # PLR0913 Too many arguments in function definition (6 > 5)
     "PLR0917",  # TPLR0917oo many positional arguments (6/5)
+    "PLR6301",  # Method `reset` could be a function, class method, or static method
     "PLR2004",  # PLR2004 magic-value-comparison - Magic value used in comparison, consider replacing {value} with a constant variable
     # "D1",  # pydocstyle (D) ... Later
     # "I001",  # I001 unsorted-imports - isort wants no blank line between imports and froms
