@@ -130,7 +130,7 @@ return { -- Main LSP Configuration
 	    line_length = 88,  -- number = 88 - Maximum line length in signatures.
 	  },
 	  plugins = {
-	--     autopep8 = { enabled = false }, -- [true] - Enable or disable the plugin (disabling required to use yapf).
+	    -- autopep8 = { enabled = false }, -- [true] - Enable or disable the plugin (disabling required to use yapf).
 	    flake8 = {
 	      enabled = false,  -- bool = false - Enable or disable the plugin.
 
