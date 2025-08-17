@@ -24,13 +24,9 @@ require("lazy").setup({
   require("plugins.kickstart.todo-comments"),
   require("plugins.kickstart.which-key"),
 
-  require("plugins.approved.commentary"),
-  require("plugins.approved.fugitive"),
   require("plugins.approved.fzf"),
   require("plugins.approved.markdown"),
-  require("plugins.approved.pep8indent"),
   require("plugins.approved.startify"),
-  require("plugins.approved.tagbar"),
   require("plugins.approved.ultisnips"),
 
   -- require("plugins.kickstart.git-signs"),
