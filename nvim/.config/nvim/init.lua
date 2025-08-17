@@ -30,7 +30,12 @@ require("lazy").setup({
   require("plugins.approved.ultisnips"),
 
   -- require("plugins.kickstart.git-signs"),
-
+  --
+  -- require("plugins.retire.commentary"),
+  -- require("plugins.retire.fugitive"),
+  -- require("plugins.retire.pep8indent"),
+  -- require("plugins.approved.tagbar"),
+  
   -- install = { colorscheme = { "vividchalk"} },
   -- install = { colorscheme = { "golden"} },
   -- install = { colorscheme = { "ayu"} }, -- Fix background
