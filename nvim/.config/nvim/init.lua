@@ -9,7 +9,6 @@ require("lazy").setup({
   require("plugins.testing.lualine"),
   require("plugins.testing.obsidian"),
   require("plugins.testing.snacks"),
-  require("plugins.testing.tabline"),
   require("plugins.testing.tree"),
   require("plugins.testing.trouble"),
   require("plugins.testing.mini"),
