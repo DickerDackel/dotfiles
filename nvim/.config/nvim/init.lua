@@ -10,12 +10,8 @@ require("lazy").setup({
   require("plugins.testing.obsidian"),
   require("plugins.testing.snacks"),
   require("plugins.testing.trouble"),
-  require("plugins.testing.mini"),
 
-  require("plugins.kickstart.fidget"),
-  require("plugins.kickstart.init"),
   require("plugins.kickstart.lazydev"),
-  -- require("plugins.kickstart.telescope"),
   require("plugins.kickstart.todo-comments"),
 
   require("plugins.approved.blink"),
