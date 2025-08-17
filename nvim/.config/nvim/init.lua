@@ -26,6 +26,7 @@ require("lazy").setup({
 
   require("plugins.approved.fzf"),
   require("plugins.approved.markdown"),
+  require("plugins.approved.oil"),
   require("plugins.approved.startify"),
   require("plugins.approved.ultisnips"),
 
