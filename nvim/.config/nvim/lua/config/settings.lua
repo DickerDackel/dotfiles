@@ -39,8 +39,8 @@ vim.o.visualbell = true
 vim.o.wildmode = 'list:longest'
 
 vim.cmd 'cabbrev help vert bo help'
-vim.cmd ':iabbrev ml@ michael.lamertz@gmail.com'
-vim.cmd ':iabbrev ml! Michael Lamertz'
+vim.cmd 'iabbrev ml@ michael.lamertz@gmail.com'
+vim.cmd 'iabbrev ml! Michael Lamertz'
 
 -- add matchit native plugin (:help matchit)
 vim.cmd 'runtime macros/matchit.vim'
@@ -64,3 +64,7 @@ vim.cmd "let g:ultisnips_python_triple_quoting_style = 'double'"
 --     vim.cmd "set formatexpr=<CR>"
 --   end
 -- })
+-- vim.o.listchars = "eol:↵,trail:~,tab:>-,nbsp:␣"
+-- vim.o.listchars = {tab = '▷', trail = '·', extends = '◣', precedes = '◢', nbsp = '○'}
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.cmd('match errorMsg /\\s\\+$/')
