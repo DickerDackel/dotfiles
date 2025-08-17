@@ -118,6 +118,7 @@ return { -- Main LSP Configuration
       -- basedpyright = { },
       -- jedi_language_server = {},
       -- ty = {},
+      ruff = { },
       pylsp = {
 	pylsp = {
 	  configurationSources = {'pycodestyle'},
