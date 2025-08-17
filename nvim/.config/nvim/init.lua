@@ -1,4 +1,5 @@
 require("config.lazy")
+vim.cmd("colorscheme golden")
 --
 require("lazy").setup({
   require("plugins.testing.neodev"),
@@ -6,7 +7,6 @@ require("lazy").setup({
   require("plugins.testing.align"),
   require("plugins.testing.conform"),
   require("plugins.testing.harpoon"),
-  require("plugins.testing.lualine"),
   require("plugins.testing.obsidian"),
   require("plugins.testing.snacks"),
   require("plugins.testing.trouble"),
@@ -20,6 +20,7 @@ require("lazy").setup({
 
   require("plugins.approved.blink"),
   require("plugins.approved.fzf"),
+  require("plugins.approved.lualine"),
   require("plugins.approved.markdown"),
   require("plugins.approved.nvim-lspconfig"),
   require("plugins.approved.nvim-treesitter"),
@@ -27,8 +28,8 @@ require("lazy").setup({
   require("plugins.approved.startify"),
   require("plugins.approved.tree"),
   require("plugins.approved.ultisnips"),
-
   require("plugins.approved.which-key"),
+  
   -- require("plugins.kickstart.git-signs"),
   --
   -- require("plugins.retire.commentary"),
@@ -37,7 +38,7 @@ require("lazy").setup({
   -- require("plugins.approved.tagbar"),
   
   -- install = { colorscheme = { "vividchalk"} },
-  -- install = { colorscheme = { "golden"} },
+  install = { colorscheme = { "golden"} },
   -- install = { colorscheme = { "ayu"} }, -- Fix background
 })
 
@@ -45,6 +46,7 @@ require("lualine").setup({
     options = { theme = "ayu_dark" },
 })
 
+require("helpers")
 require("config.settings")
 require("config.bindings")
 
