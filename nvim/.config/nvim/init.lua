@@ -21,18 +21,18 @@ require("lazy").setup({
   require("plugins.approved.nvim-lspconfig"),
   require("plugins.approved.nvim-treesitter"),
   require("plugins.approved.oil"),
+  require("plugins.approved.pep8indent"),
   require("plugins.approved.startify"),
   require("plugins.approved.tree"),
   require("plugins.approved.ultisnips"),
   require("plugins.approved.which-key"),
-  
+
   -- require("plugins.kickstart.git-signs"),
   --
   -- require("plugins.retire.commentary"),
   -- require("plugins.retire.fugitive"),
-  -- require("plugins.retire.pep8indent"),
   -- require("plugins.approved.tagbar"),
-  
+
   -- install = { colorscheme = { "vividchalk"} },
   install = { colorscheme = { "golden"} },
   -- install = { colorscheme = { "ayu"} }, -- Fix background
