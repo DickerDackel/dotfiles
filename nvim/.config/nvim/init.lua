@@ -7,6 +7,7 @@ require("lazy").setup({
   require("plugins.testing.align"),
   require("plugins.testing.conform"),
   require("plugins.testing.harpoon"),
+  require("plugins.testing.luasnip"),
   require("plugins.testing.obsidian"),
   require("plugins.testing.snacks"),
   require("plugins.testing.trouble"),
@@ -24,7 +25,6 @@ require("lazy").setup({
   require("plugins.approved.pep8indent"),
   require("plugins.approved.startify"),
   require("plugins.approved.tree"),
-  require("plugins.approved.ultisnips"),
   require("plugins.approved.which-key"),
 
   -- require("plugins.kickstart.git-signs"),
@@ -32,6 +32,7 @@ require("lazy").setup({
   -- require("plugins.retire.commentary"),
   -- require("plugins.retire.fugitive"),
   -- require("plugins.approved.tagbar"),
+  -- require("plugins.retire.ultisnips"),
 
   -- install = { colorscheme = { "vividchalk"} },
   install = { colorscheme = { "golden"} },

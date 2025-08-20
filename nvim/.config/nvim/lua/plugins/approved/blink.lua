@@ -2,6 +2,7 @@ return {
   'saghen/blink.cmp',
   dependencies = {
     'rafamadriz/friendly-snippets',
+    'L3MON4D3/LuaSnip',
   },
 
   version = '1.*',
@@ -34,7 +35,7 @@ return {
       ['<C-p>'] = { 'select_prev' },
       ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
       ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' }, 
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
     },
 
     -- ML: I like these...
@@ -48,6 +49,8 @@ return {
 	show_documentation = false,
       },
     },
+
+    snippets = { preset = "luasnip" },
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
