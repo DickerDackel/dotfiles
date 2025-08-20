@@ -31,7 +31,7 @@ require("lazy").setup({
   --
   -- require("plugins.retire.commentary"),
   -- require("plugins.retire.fugitive"),
-  -- require("plugins.approved.tagbar"),
+  -- require("plugins.retire.tagbar"),
   -- require("plugins.retire.ultisnips"),
 
   -- install = { colorscheme = { "vividchalk"} },
