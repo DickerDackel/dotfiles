@@ -45,6 +45,8 @@ vim.cmd 'iabbrev ml! Michael Lamertz'
 -- add matchit native plugin (:help matchit)
 vim.cmd 'runtime macros/matchit.vim'
 
+vim.opt.list = true
+vim.opt.listchars = {tab = '» ', trail = '·', nbsp = '␣'}
+-- vim.o.listchars = {eol = '↵', trail = '~', tab = '>-', nbsp = '␣'}
 -- vim.o.listchars = {tab = '▷', trail = '·', extends = '◣', precedes = '◢', nbsp = '○'}
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.cmd('match errorMsg /\\s\\+$/')
