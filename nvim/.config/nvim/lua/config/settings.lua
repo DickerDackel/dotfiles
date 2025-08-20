@@ -45,12 +45,6 @@ vim.cmd 'iabbrev ml! Michael Lamertz'
 -- add matchit native plugin (:help matchit)
 vim.cmd 'runtime macros/matchit.vim'
 
--- vim.api.nvim_create_autocmd('LspAttach', {
---   callback = function(ev)
---     vim.cmd "set formatexpr=<CR>"
---   end
--- })
--- vim.o.listchars = "eol:↵,trail:~,tab:>-,nbsp:␣"
 -- vim.o.listchars = {tab = '▷', trail = '·', extends = '◣', precedes = '◢', nbsp = '○'}
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.cmd('match errorMsg /\\s\\+$/')
