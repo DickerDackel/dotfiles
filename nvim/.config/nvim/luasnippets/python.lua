@@ -164,6 +164,9 @@ ls.add_snippets('python', {
   --   '        print(f\'{mean(timings)=:.5f}  {median(timings)=:.5f}  {stdev(timings)=:.5f}\\n\')',
   -- })),
   s('longbench', t({
+    'from statistics import mean, median, stdev',
+    'from timeit import timeit',
+    '',
     'def bench(*fns, runs=5, number=1_000_000) -> None:',
     '    summary = []',
     '    outer_timings = []',
