@@ -13,15 +13,15 @@ return {
 
     completion = {
       list = {
-	selection = { preselect = false, auto_insert = false },
-	max_items = 10,
+        selection = { preselect = true, auto_insert = false },
+        max_items = 10,
       },
       -- ML: enabling this is fucking annoying.  It puts () behind a completed function.
       accept = { auto_brackets = { enabled = false } },
       documentation = { auto_show = false },
       ghost_text = {
-	enabled = true,
-	show_without_selection = true,
+        enabled = true,
+        show_without_selection = true,
       },
     },
 
@@ -42,11 +42,11 @@ return {
     signature = {
       enabled = true,
       window = {
-	-- direction_priority = { 's', 'n' },
-	direction_priority = { 's' },
-	border = "rounded",
-	treesitter_highlighting = true,
-	show_documentation = false,
+        -- direction_priority = { 's', 'n' },
+        direction_priority = { 's' },
+        border = "rounded",
+        treesitter_highlighting = true,
+        show_documentation = false,
       },
     },
 
