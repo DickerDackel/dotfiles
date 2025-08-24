@@ -11,6 +11,7 @@ require("lazy").setup({
   require("plugins.testing.obsidian"),
   require("plugins.testing.snacks"),
   require("plugins.testing.trouble"),
+  require("plugins.testing.gruvbox"),
 
   require("plugins.kickstart.lazydev"),
   require("plugins.kickstart.todo-comments"),
