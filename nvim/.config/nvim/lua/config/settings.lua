@@ -23,7 +23,9 @@ vim.o.signcolumn = 'yes'
 ------------------------------------------------------------------------
 -- Mine...
 ------------------------------------------------------------------------
-vim.o.scrolloff = 3
+vim.o.expandtab = true
+vim.o.sidescroll = 10
+vim.o.scrolloff = 5
 vim.o.foldnestmax = 2
 vim.opt.formatoptions:remove 't'
 -- Good for moving around, bad for e.g. changing with ciw
