@@ -68,5 +68,6 @@ vim.keymap.set({'n', 'v'}, '<leader>f', function()
 end , bufopts)
 
 vim.keymap.set('n', '<leader>/', function () Snacks.terminal() end)
+vim.keymap.set('n', '<leader>v', function () FzfLua.files({cwd = '~/.config/nvim' }) end)
 
 -- vim.lsp.set_log_level("TRACE")
