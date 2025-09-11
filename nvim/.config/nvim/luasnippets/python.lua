@@ -227,4 +227,10 @@ ls.add_snippets('python', {
     '',
     '        return obj.__getattribute__(self.attrib)',
   })),
+  s('colorsave', t({
+    'bkp_color = renderer.draw_color',
+    'renderer.draw_color = \'FIXME\'',
+    'FIXME()',
+    'renderer.draw_color = bkp_color'
+  }))
 })
