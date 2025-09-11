@@ -13,7 +13,7 @@ return {
 
     completion = {
       list = {
-        selection = { preselect = true, auto_insert = false },
+        selection = { preselect = false, auto_insert = false },
         max_items = 10,
       },
       -- ML: enabling this is fucking annoying.  It puts () behind a completed function.
