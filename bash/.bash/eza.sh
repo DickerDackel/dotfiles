@@ -1,5 +1,5 @@
-alias ls=eza_wrapper
-alias ll='eza_wrapper -l'
+alias ls='eza_wrapper -F'
+alias ll='eza_wrapper -lF'
 
 # Stolen here: https://github.com/eza-community/eza/issues/980#issuecomment-2499761779
 eza_wrapper () {
