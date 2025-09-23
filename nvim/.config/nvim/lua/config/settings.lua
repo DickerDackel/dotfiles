@@ -27,7 +27,7 @@ vim.o.expandtab = true
 vim.o.sidescroll = 10
 vim.o.scrolloff = 5
 vim.o.foldnestmax = 2
-vim.opt.formatoptions:remove 't'
+vim.opt.formatoptions = 'jcroql2'
 -- Good for moving around, bad for e.g. changing with ciw
 -- vim.opt.iskeyword:remove '_'
 vim.o.linebreak = true
