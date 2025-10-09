@@ -91,4 +91,7 @@ if which eza >/dev/null 2>&1; then
         # Execute eza with the processed arguments
         eza "${args[@]}"
     }
+else
+    alias ls='ls -F --color'
+    alias ll='ls -lF --color'
 fi
