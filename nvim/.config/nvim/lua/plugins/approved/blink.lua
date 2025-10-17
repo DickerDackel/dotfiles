@@ -27,16 +27,20 @@ return {
 
     fuzzy = { implementation = "prefer_rust_with_warning" },
 
-    keymap = {
-      ['<CR>'] = { 'accept', 'fallback' },
-      ['<C-\\>'] = { 'hide', 'fallback' },
-      ['<C-n>'] = { 'select_next', 'show' },
-      ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-      ['<C-p>'] = { 'select_prev' },
-      ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
-      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-    },
+    -- ML This will kill digraphs
+    keymap = { preset = 'super-tab' },
+    -- ML This is a copy of super-tab without C-k
+
+    --ML keymap = {
+    --ML   ['<CR>'] = { 'accept', 'fallback' },
+    --ML   ['<C-\\>'] = { 'hide', 'fallback' },
+    --ML   ['<C-n>'] = { 'select_next', 'show' },
+    --ML   ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+    --ML   ['<C-p>'] = { 'select_prev' },
+    --ML   ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
+    --ML   ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+    --ML   ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+    --ML },
 
     -- ML: I like these...
     signature = {

@@ -98,7 +98,7 @@ ls.add_snippets('python', {
     '    ...',
     '',
     '    pygame.display.flip()',
-    '    pygame.display.set_caption(f\'{TITLE} - time={pygame.time.get_ticks()/1000:.2f}  fps={clock.get_fps():.2f}\')',
+    '    pygame.display.set_caption(f\'{TITLE} - time={pygame.time.get_ticks() / 1000:.2f}  fps={clock.get_fps():.2f}\')',
   })),
   s('sdl2', t({
     '#!/bin/env python3',
@@ -248,5 +248,11 @@ ls.add_snippets('python', {
     '',
     '    def draw(self):',
     '        pass',
+  })),
+  s('colorsave', t({
+    'bkp_color = renderer.draw_color',
+    'renderer.draw_color = \'FIXME\'',
+    'FIXME()',
+    'renderer.draw_color = bkp_color'
   })),
 })

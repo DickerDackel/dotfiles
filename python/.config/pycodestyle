@@ -6,8 +6,9 @@ count = False
 # E265 block comment should start with '# '
 # E701 multiple statements on one line (colon)
 # E704 multiple statements on one line (def)
+# E741 ambiguous variable name [E741]
 # W503 line break before binary operator
 # E501 Line too long ({width} > {limit})
-ignore = E129, E201, E241, E265, E501, E701, E704, W503
+ignore = E129, E201, E241, E265, E501, E701, E704, E741, W503
 max-line-length = 128
 statistics = True
